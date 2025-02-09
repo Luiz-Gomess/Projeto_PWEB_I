@@ -1,0 +1,22 @@
+{
+    "vagas" : [
+        {
+            "id" : 1,
+            "titulo" : "Desenvolvedor Front-End",
+            "descricao" : "Desenvolvimento de aplicações web utilizando Angular",
+            "salario" : "5000.0"
+        },
+        {
+            "id" : 2,
+            "titulo" : "Desenvolvedor Back-End",
+            "descricao" : "Desenvolvimento de aplicações web utilizando Spring Boot",
+            "salario" : "5000.0"
+        },
+        {
+            "id" : 3,
+            "titulo" : "Desenvolvedor Mobile",
+            "descricao" : "Desenvolvimento de aplicações moveis utilizando Kotlin",
+            "salario" : "5000.0"
+        }
+    ]
+}
