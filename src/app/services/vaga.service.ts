@@ -15,4 +15,8 @@ export class VagaService {
   listarVagas(): Observable<Vaga[]> {
     return this.http.get<Vaga[]>(this.apiUrl);
   }
+
+  verVaga(id: number): Observable<Vaga> {
+    return this.http.get<Vaga>(`${this.apiUrl}?id=${id}`);
+  }
 }

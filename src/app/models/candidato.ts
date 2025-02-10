@@ -3,6 +3,6 @@ export class Candidato{
         public cpf : string,
         public nome : string,
         public email : string,
-        public candidaturas : string[],
+        public candidaturas : number[],
     ){}
 }
