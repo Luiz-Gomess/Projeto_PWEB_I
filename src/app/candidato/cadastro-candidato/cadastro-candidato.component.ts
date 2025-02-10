@@ -12,7 +12,7 @@ import { FormsModule } from '@angular/forms';
   styleUrl: './cadastro-candidato.component.css'
 })
 export class CadastroCandidatoComponent {
-  candidato: Candidato = new Candidato('', '', '', []); // Inicia o modelo vazio
+  candidato: Candidato = new Candidato('','', '', '', []); // Inicia o modelo vazio
   candidatoCadastrado: Candidato | null = null;
   candidaturas : Vaga[] | null | undefined;
 
@@ -49,8 +49,15 @@ export class CadastroCandidatoComponent {
     this.candidatoService.listarCandidaturas(listaIDSVagas).subscribe(candidaturas => this.candidaturas = candidaturas);
   }
 
-  candidatar(idVaga: number, cpfCandidato: string){
-    // this.candidatoService.candidatar(idVaga, cpfCandidato);
+  candidatar(idVaga:number) {
+    this.candidatoService.candidatar(idVaga, this.candidato.cpf).subscribe({
+      next: () => {
+       console.log( 'Candidato cadastrado na vaga com sucesso!');
+      },
+      error: (err) => {
+        console.log(`Erro: ${err.message}`);
+      }
+    });
   }
 }
 

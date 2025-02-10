@@ -38,8 +38,8 @@
 
 <!-- BUSCAR CANDIDATOS -->
 
-<h2>Buscar Candidato</h2>
-
+<!-- <h2>Buscar Candidato</h2> -->
+<!-- 
 <form #buscarForm="ngForm" (ngSubmit)="buscarCandidato(candidato.cpf)">
   <label for="cpf">CPF:</label>
   <input type="text" id="cpf" [(ngModel)]="candidato.cpf" name="cpf" required />
@@ -54,13 +54,28 @@
   <p><strong>Email:</strong> {{ candidato.email }}</p>
 </div>
 
-<!-- DELETAR CANDIDATO -->
+DELETAR CANDIDATO -->
 
-<h2>Deletar Candidato</h2>
+<!-- <h2>Deletar Candidato</h2>
 
 <form #deletarForm="ngForm" (ngSubmit)="deletarCandidato(candidato.cpf)">
   <label for="cpf">CPF:</label>
   <input type="text" id="cpf" [(ngModel)]="candidato.cpf" name="cpf" required />
 
   <button type="submit" [disabled]="deletarForm.invalid">Deletar</button>
+</form> -->
+
+<form #candidaturaForm="ngForm" (ngSubmit)="candidatar(+vagaInput.value)">
+  <label for="cpf">CPF do Candidato:</label>
+  <input id="cpf" #cpfInput type="text" name="cpf" required />
+
+  <label for="vaga">ID da Vaga:</label>
+  <input id="vaga" #vagaInput type="number" name="vaga" required />
+
+  <button type="submit">Candidatar</button>
 </form>
+
+<!-- <div *ngIf="mensagem" class="mensagem">
+  {{ mensagem }}
+</div> -->
+

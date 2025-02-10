@@ -4,6 +4,6 @@ export class Vaga{
         public titulo: string,
         public descricao: string,
         public salario: number,
-        public candidatos: string[],
+        public candidatos: string[] = [],
     ){}
 }
