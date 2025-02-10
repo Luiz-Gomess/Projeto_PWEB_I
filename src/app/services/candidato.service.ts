@@ -14,9 +14,14 @@ export class CandidatoService {
 
   constructor(private http: HttpClient, private vagaService: VagaService){}
 
-  buscarCandidato(cpf: string): Observable<any > {
-    return this.http.get<any[]>(`${this.apiUrl}?cpf=${cpf}`).pipe(
-      map((candidatos:any) => candidatos.length > 0 ? candidatos[0] : null)
+  buscarCandidato(cpf: string): Observable<Candidato> {
+    return this.http.get<Candidato[]>(`${this.apiUrl}?cpf=${cpf}`).pipe(
+      map((candidatos: Candidato[]) => {
+        if (!candidatos || candidatos.length === 0) {
+          throw new Error('CPF não encontrado na lista.');
+        }
+        return candidatos[0];
+      })
     );
   }
 
@@ -70,9 +75,6 @@ export class CandidatoService {
     );
   }
   
-  
-  
-
   removerCandidatura(idVaga: number, cpfCandidato: string): Observable<any>{
     return this.vagaService.buscarVaga(idVaga).pipe(
       switchMap((vaga) => 
@@ -99,7 +101,5 @@ export class CandidatoService {
       )
     );
   }
-
-
 
 }

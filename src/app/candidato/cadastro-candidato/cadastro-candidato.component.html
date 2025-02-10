@@ -5,7 +5,7 @@
 
 <!-- Cadastro -->
 
-<!-- <h2>Cadastrar Candidato</h2>
+ <h2>Cadastrar Candidato</h2>
 
 <form #candidatoForm="ngForm" (ngSubmit)="cadastrar()">
   <label for="cpf">CPF:</label>
@@ -18,8 +18,8 @@
   <input type="email" id="email" [(ngModel)]="candidato.email" name="email" required />
 
   <button type="submit" [disabled]="candidatoForm.invalid">Cadastrar</button>
-</form>
-
+</form> 
+<!--  
 <div *ngIf="candidatoCadastrado">
   <h3>Candidato Cadastrado:</h3>
   <p><strong>CPF:</strong> {{ candidatoCadastrado.cpf }}</p>
@@ -38,8 +38,8 @@
 
 <!-- BUSCAR CANDIDATOS -->
 
-<!-- <h2>Buscar Candidato</h2> -->
-<!-- 
+<!-- <h2>Buscar Candidato</h2>
+
 <form #buscarForm="ngForm" (ngSubmit)="buscarCandidato(candidato.cpf)">
   <label for="cpf">CPF:</label>
   <input type="text" id="cpf" [(ngModel)]="candidato.cpf" name="cpf" required />
@@ -52,9 +52,9 @@
   <p><strong>CPF:</strong> {{ candidato.cpf }}</p>
   <p><strong>Nome:</strong> {{ candidato.nome }}</p>
   <p><strong>Email:</strong> {{ candidato.email }}</p>
-</div>
+</div> -->
 
-DELETAR CANDIDATO -->
+<!-- DELETAR CANDIDATO -->
 
 <!-- <h2>Deletar Candidato</h2>
 
@@ -64,7 +64,7 @@ DELETAR CANDIDATO -->
 
   <button type="submit" [disabled]="deletarForm.invalid">Deletar</button>
 </form> -->
-<h2>Candidatar</h2>
+<!-- <h2>Candidatar</h2>
 <form #candidaturaForm="ngForm" (ngSubmit)="candidatar(+vagaInput.value)">
   <label for="cpf">CPF do Candidato:</label>
   <input id="cpf" #cpfInput type="text" name="cpf" required />
@@ -73,13 +73,13 @@ DELETAR CANDIDATO -->
   <input id="vaga" #vagaInput type="number" name="vaga" required />
 
   <button type="submit">Candidatar</button>
-</form>
+</form> -->
 
 <!-- <div *ngIf="mensagem" class="mensagem">
   {{ mensagem }}
 </div> -->
 
-<h2>Remover candidatura</h2>
+<!-- <h2>Remover candidatura</h2>
 <form #candidaturaForm="ngForm" (ngSubmit)="removerCandidatura(+vagaInput.value)">
   <label for="cpf">CPF do Candidato:</label>
   <input id="cpf" #cpfInput type="text" name="cpf" required />
@@ -88,4 +88,4 @@ DELETAR CANDIDATO -->
   <input id="vaga" #vagaInput type="number" name="vaga" required />
 
   <button type="submit">Candidatar</button>
-</form>
+</form> -->

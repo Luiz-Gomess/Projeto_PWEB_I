@@ -12,8 +12,7 @@ import { FormsModule } from '@angular/forms';
   styleUrl: './cadastro-candidato.component.css'
 })
 export class CadastroCandidatoComponent {
-  candidato: Candidato = new Candidato('','', '', '', []); // Inicia o modelo vazio
-  candidatoCadastrado: Candidato | null = null;
+  candidato: Candidato = new Candidato('','', '', '',[], []); // Inicia o modelo vazio
   candidaturas : Vaga[] | null | undefined;
 
   constructor(private candidatoService: CandidatoService) {}
@@ -21,7 +20,7 @@ export class CadastroCandidatoComponent {
   cadastrar() {
     this.candidatoService.cadastrar(this.candidato).subscribe({
       next: (candidato) => {
-        this.candidatoCadastrado = candidato;
+        this.candidato = candidato;
         console.log('Candidato cadastrado:', candidato);
       },
       error: (err) => console.error('Erro ao cadastrar candidato:', err)
@@ -31,18 +30,23 @@ export class CadastroCandidatoComponent {
   deletarCandidato(cpf: string): void {
     this.candidatoService.deletarPerfil(cpf).subscribe({
       next: () => {
-        // this.mensagem = `Candidato com CPF ${cpf} deletado com sucesso!`;
         console.log('Candidato deletado:', cpf);
       },
       error: (err) => {
-        // this.mensagem = 'Erro ao deletar candidato!';
         console.error('Erro ao deletar candidato:', err);
       }
     });
   }
 
   buscarCandidato(cpf: string): void {
-    this.candidatoService.buscarCandidato(cpf).subscribe(candidatoBuscado => this.candidato = candidatoBuscado);
+    this.candidatoService.buscarCandidato(cpf).subscribe({
+      next: (candidatoBuscado) => {
+        this.candidato = candidatoBuscado;
+      },
+      error: (err) => {
+        console.error('Erro ao buscar candidato:', err);
+      }
+    });
   }
 
   listarCandidaturas(listaIDSVagas : number[]){

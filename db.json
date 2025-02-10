@@ -61,6 +61,15 @@
         7
       ],
       "id": "f45d"
+    },
+    {
+      "id": "f45d",
+      "cpf": "12345678910",
+      "nome": "luizinho",
+      "email": "email@email",
+      "candidaturas": [
+        7
+      ]
     }
   ]
 }
