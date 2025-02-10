@@ -64,7 +64,7 @@ DELETAR CANDIDATO -->
 
   <button type="submit" [disabled]="deletarForm.invalid">Deletar</button>
 </form> -->
-
+<h2>Candidatar</h2>
 <form #candidaturaForm="ngForm" (ngSubmit)="candidatar(+vagaInput.value)">
   <label for="cpf">CPF do Candidato:</label>
   <input id="cpf" #cpfInput type="text" name="cpf" required />
@@ -79,3 +79,13 @@ DELETAR CANDIDATO -->
   {{ mensagem }}
 </div> -->
 
+<h2>Remover candidatura</h2>
+<form #candidaturaForm="ngForm" (ngSubmit)="removerCandidatura(+vagaInput.value)">
+  <label for="cpf">CPF do Candidato:</label>
+  <input id="cpf" #cpfInput type="text" name="cpf" required />
+
+  <label for="vaga">ID da Vaga:</label>
+  <input id="vaga" #vagaInput type="number" name="vaga" required />
+
+  <button type="submit">Candidatar</button>
+</form>

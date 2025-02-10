@@ -46,51 +46,6 @@ export class CandidatoService {
     );
   }
 
-  // candidatar(idVaga: number, cpfCandidato: string): Observable<any> {
-  //   return this.vagaService.buscarVaga(idVaga).pipe(
-  //     switchMap((vaga) => {
-  //       if (!vaga) {
-  //         return throwError(() => new Error('Vaga não encontrada'));
-  //       }
-
-  //       return this.buscarCandidato(cpfCandidato).pipe(
-  //         switchMap((candidato) => {
-  //           if (!candidato) {
-  //             return throwError(() => new Error('Candidato não encontrado'));
-  //           }
-
-  //           // Verifica se o candidato já está cadastrado na vaga
-  //           if (vaga.candidatos && vaga.candidatos.find(cpf => cpf === candidato.cpf)) {
-  //              return throwError(() => new Error('Candidato já cadastrado nesta vaga'));
-  //           }
-
-  //           // Se a vaga não tiver candidatos, inicializa o array
-  //           if (!vaga.candidatos) {
-  //              vaga.candidatos = [];
-  //           }
-
-  //           vaga.candidatos.push(candidato);
-
-  //           // Atualiza a vaga no backend usando o método atualizarVaga
-  //           return this.vagaService.atualizarVaga(vaga).pipe(
-  //             switchMap(() => { // Após atualizar a vaga, atualiza o candidato
-  //                 candidato.candidaturas = [...(candidato.candidaturas || []), idVaga];
-  //                 return this.atualizarCandidato(candidato).pipe(
-  //                   map(() => ({ message: 'Candidatura realizada com sucesso', vaga: vaga }))
-  //                 );
-  //             }),
-  //             catchError((error) => {
-  //               console.error('Erro ao atualizar candidato:', error);
-  //               return throwError(() => new Error('Erro ao candidatar-se para a vaga'));
-  //             })
-  //           );
-  //         })
-  //       );
-  //     })
-  //   );
-  // }
-
-
   candidatar(idVaga: number, cpfCandidato: string): Observable<any> {
     return this.vagaService.buscarVaga(idVaga).pipe(
       switchMap((vaga) => 
@@ -99,10 +54,12 @@ export class CandidatoService {
             if (!vaga || !candidato) {
               return throwError(() => new Error('Vaga ou Candidato não encontrado'));
             }
+            else if (candidato.candidaturas.includes(idVaga)){
+              return throwError(() => new Error('Candidato já cadastrado nesta vaga'));
+            }
 
-            vaga.candidatos = [...(vaga.candidatos || []), candidato.cpf];
-
-            candidato.candidaturas = [...(candidato.candidaturas || []), idVaga];
+            vaga.candidatos.push(candidato.cpf);
+            candidato.candidaturas.push(idVaga);
   
             return this.vagaService.atualizarVaga(vaga).pipe(
               switchMap(() => this.atualizarCandidato(candidato))
@@ -116,8 +73,31 @@ export class CandidatoService {
   
   
 
-  removerCandidatura(idVaga: string, cpfCandidato: string){
+  removerCandidatura(idVaga: number, cpfCandidato: string): Observable<any>{
+    return this.vagaService.buscarVaga(idVaga).pipe(
+      switchMap((vaga) => 
+        this.buscarCandidato(cpfCandidato).pipe(
+          switchMap((candidato) => {
+            if (!vaga || !candidato) {
+              return throwError(() => new Error('Vaga ou Candidato não encontrado'));
+            }
+            else if (!candidato.candidaturas.includes(idVaga)){
+              return throwError(() => new Error('Candidato não está cadastrado nesta vaga'));
+            }
 
+            const candIndex = vaga.candidatos.indexOf(candidato.cpf)
+            const vagaIndex = candidato.candidaturas.indexOf(idVaga)
+
+            vaga.candidatos.splice(candIndex, 1);
+            candidato.candidaturas.splice(vagaIndex, 1);
+  
+            return this.vagaService.atualizarVaga(vaga).pipe(
+              switchMap(() => this.atualizarCandidato(candidato))
+            )
+          })
+        )
+      )
+    );
   }
 
 

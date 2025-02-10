@@ -59,6 +59,17 @@ export class CadastroCandidatoComponent {
       }
     });
   }
+
+  removerCandidatura(idVaga:number){
+    this.candidatoService.removerCandidatura(idVaga, this.candidato.cpf).subscribe({
+      next: () => {
+       console.log( 'Candidatura removida com sucesso!');
+      },
+      error: (err) => {
+        console.log(`Erro: ${err.message}`);
+      }
+    });
+  }
 }
 
 
