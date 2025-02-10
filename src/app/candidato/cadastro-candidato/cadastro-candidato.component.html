@@ -1,5 +1,66 @@
+<p>Nome : {{candidato.nome}}</p>
+<!-- <p> Candidaturas : {{candidato?.candidaturas}}</p> -->
+
+<!-- <button (click)="buscarCandidato('1234')">Buscar Candidato</button> -->
+
+<!-- Cadastro -->
+
+<!-- <h2>Cadastrar Candidato</h2>
+
+<form #candidatoForm="ngForm" (ngSubmit)="cadastrar()">
+  <label for="cpf">CPF:</label>
+  <input type="text" id="cpf" [(ngModel)]="candidato.cpf" name="cpf" required />
+
+  <label for="nome">Nome:</label>
+  <input type="text" id="nome" [(ngModel)]="candidato.nome" name="nome" required />
+
+  <label for="email">Email:</label>
+  <input type="email" id="email" [(ngModel)]="candidato.email" name="email" required />
+
+  <button type="submit" [disabled]="candidatoForm.invalid">Cadastrar</button>
+</form>
+
+<div *ngIf="candidatoCadastrado">
+  <h3>Candidato Cadastrado:</h3>
+  <p><strong>CPF:</strong> {{ candidatoCadastrado.cpf }}</p>
+  <p><strong>Nome:</strong> {{ candidatoCadastrado.nome }}</p>
+  <p><strong>Email:</strong> {{ candidatoCadastrado.email }}</p>
+</div>
+
+
+<button (click)="listarCandidaturas(candidato.candidaturas || [])">Listar candidaturas</button>
+
 <ul>
-    <li *ngFor="let vaga of vagas">
-        {{vaga.id}} - {{vaga.titulo}} - {{vaga.salario}}
+    <li *ngFor="let candidatura of candidaturas">
+        {{candidatura.id}} - {{candidatura.titulo}} - {{candidatura.salario}}
     </li>
-</ul>
+</ul> -->
+
+<!-- BUSCAR CANDIDATOS -->
+
+<h2>Buscar Candidato</h2>
+
+<form #buscarForm="ngForm" (ngSubmit)="buscarCandidato(candidato.cpf)">
+  <label for="cpf">CPF:</label>
+  <input type="text" id="cpf" [(ngModel)]="candidato.cpf" name="cpf" required />
+
+  <button type="submit" [disabled]="buscarForm.invalid">Buscar</button>
+</form>
+
+<div *ngIf="candidato">
+  <h3>Dados do Candidato:</h3>
+  <p><strong>CPF:</strong> {{ candidato.cpf }}</p>
+  <p><strong>Nome:</strong> {{ candidato.nome }}</p>
+  <p><strong>Email:</strong> {{ candidato.email }}</p>
+</div>
+
+<!-- DELETAR CANDIDATO -->
+
+<h2>Deletar Candidato</h2>
+
+<form #deletarForm="ngForm" (ngSubmit)="deletarCandidato(candidato.cpf)">
+  <label for="cpf">CPF:</label>
+  <input type="text" id="cpf" [(ngModel)]="candidato.cpf" name="cpf" required />
+
+  <button type="submit" [disabled]="deletarForm.invalid">Deletar</button>
+</form>

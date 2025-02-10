@@ -16,7 +16,7 @@ export class VagaService {
     return this.http.get<Vaga[]>(this.apiUrl);
   }
 
-  verVaga(id: number): Observable<Vaga> {
+  buscarVaga(id: number): Observable<Vaga> {
     return this.http.get<Vaga>(`${this.apiUrl}?id=${id}`);
   }
 }

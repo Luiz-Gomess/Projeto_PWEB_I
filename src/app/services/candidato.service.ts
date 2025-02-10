@@ -1,5 +1,5 @@
 import { Injectable } from '@angular/core';
-import { Observable, of } from 'rxjs';
+import { Observable, map, switchMap, throwError } from 'rxjs';
 import { HttpClient } from '@angular/common/http';
 import { Candidato } from '../models/candidato';
 import { Vaga } from '../models/vaga';
@@ -10,38 +10,49 @@ import { VagaService } from './vaga.service';
 })
 export class CandidatoService {
 
-  private apiUrl = 'http://localhost:3000/'; 
+  private apiUrl = 'http://localhost:3000/candidatos'; 
 
   constructor(private http: HttpClient, private vagaService: VagaService){}
+
+  buscarCandidato(cpf: string): Observable<any > {
+    return this.http.get<any[]>(`${this.apiUrl}?cpf=${cpf}`).pipe(
+      map((candidatos:any) => candidatos.length > 0 ? candidatos[0] : null) // Retorna apenas o primeiro candidato encontrado ou null
+    );
+  }
 
   cadastrar(candidato: Candidato): Observable<Candidato> {
     return this.http.post<Candidato>(this.apiUrl, candidato);
   }
 
-  deletarPerfil(cpf:string): Observable<any>{
-    return this.http.delete(`${this.apiUrl}/${cpf}`);
+  deletarPerfil(cpf: string): Observable<any> {
+    return this.buscarCandidato(cpf).pipe(
+      switchMap((candidato) => {
+        if (candidato) {
+          return this.http.delete(`${this.apiUrl}/${candidato.id}`);
+        } else {
+          return throwError(() => new Error('Candidato não encontrado'));
+        }
+      })
+    );
   }
 
-  listarCandidaturas(cpf: string): Observable<Vaga[]> {
-    let idsCandidaturas:number[] = [];
-    let gambiarra: Observable <Vaga[]> = of([]);
-    
-    this.http.get<Candidato[]>(`${this.apiUrl}candidatos?cpf=${cpf}`).subscribe(candidatos => {
-      idsCandidaturas = candidatos[0].candidaturas;
+  listarCandidaturas(listaIDSVagas: number[]): Observable<Vaga[]> {
+    return this.vagaService.listarVagas().pipe(
+      map((vagas) => vagas.filter(vaga => listaIDSVagas.includes(Number(vaga.id)))) // Filtra os IDs desejados
+    );
+  }
 
-      const queryString = idsCandidaturas.map(id => `id=${id}`).join("&");
+  candidatar(idVaga: number, cpfCandidato: string){
+    this.buscarCandidato(cpfCandidato).subscribe(candidato => {
+        let candidatoDash: Candidato = candidato;
+        candidatoDash.candidaturas.push(idVaga);
+    });
 
-      gambiarra = this.http.get<Vaga[]>(`${this.apiUrl}vagas?${queryString}`)
+    this.vagaService.buscarVaga(idVaga).subscribe(vaga => {
+        let vagaDash: Vaga = vaga;
+        vagaDash.candidatos.push(cpfCandidato)
     })
-
-    return gambiarra;
-    
-  }
-
-
-  candidatar(idVaga: string, cpfCandidato: string){
-
-  }
+}
 
   removerCandidatura(idVaga: string, cpfCandidato: string){
 
