@@ -5,7 +5,7 @@
 
 <!-- Cadastro -->
 
- <h2>Cadastrar Candidato</h2>
+ <!-- <h2>Cadastrar Candidato</h2>
 
 <form #candidatoForm="ngForm" (ngSubmit)="cadastrar()">
   
@@ -19,7 +19,7 @@
   <input type="email" id="email" [(ngModel)]="candidato.email" name="email" required />
 
   <button type="submit" [disabled]="candidatoForm.invalid">Cadastrar</button>
-</form> 
+</form>  -->
  
 <!-- <div *ngIf="candidatoCadastrado">
   <h3>Candidato Cadastrado:</h3>
@@ -94,3 +94,16 @@
 </form> -->
 
 <!-- <button (click)="verificarCPF('1234423423')">verifica</button> -->
+
+<!-- Login -->
+
+<h2>Login</h2>
+<form (submit)="login(candidato.cpf, candidato.senha)">
+    <label for="cpf">CPF:</label>
+    <input type="text" id="cpf" [(ngModel)]="candidato.cpf" name="cpf" required>
+    <br>
+    <label for="senha">Senha:</label>
+    <input type="password" id="senha" [(ngModel)]="candidato.senha" name="senha" required>
+    <br>
+    <button type="submit">Logar</button>
+</form>

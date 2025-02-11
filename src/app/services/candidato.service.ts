@@ -1,5 +1,5 @@
 import { Injectable } from '@angular/core';
-import { Observable, map, switchMap, throwError } from 'rxjs';
+import { Observable, map, switchMap, throwError,catchError, of } from 'rxjs';
 import { HttpClient } from '@angular/common/http';
 import { Candidato } from '../models/candidato';
 import { Vaga } from '../models/vaga';
@@ -20,11 +20,11 @@ export class CandidatoService {
 
   buscarCandidato(cpf: string): Observable<any> {
     return this.http.get<Candidato[]>(`${this.apiUrl}?cpf=${cpf}`).pipe(
-      map((candidato: Candidato[]) => {
-        if(candidato.length > 0){
-          return candidato[0]
-        }else{
-          return throwError(() => new Error('Candidato não encontrado'));
+      map((candidatos: Candidato[]) => {
+        if (candidatos.length > 0) {
+          return candidatos[0];
+        } else {
+          throw new Error('Candidato não encontrado'); // Lança erro corretamente
         }
       })
     );
@@ -32,6 +32,19 @@ export class CandidatoService {
 
   atualizarCandidato(candidato: any): Observable<Candidato> {
     return this.http.put<Candidato>(`${this.apiUrl}/${candidato.id}`, candidato);
+  }
+
+  logar(cpf: string, senha: string): Observable<Candidato> {
+    return this.buscarCandidato(cpf).pipe(
+      catchError((error) => throwError(() => new Error(error.message))), // Propaga erro corretamente
+      switchMap((candidato) => {
+        if (candidato.senha === senha) {
+          return of(candidato);
+        } else {
+          return throwError(() => new Error('Senha incorreta'));
+        }
+      })
+    );
   }
 
   cadastrar(candidato: Candidato): Observable<Candidato> {
