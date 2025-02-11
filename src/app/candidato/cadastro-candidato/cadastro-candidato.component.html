@@ -8,6 +8,7 @@
  <h2>Cadastrar Candidato</h2>
 
 <form #candidatoForm="ngForm" (ngSubmit)="cadastrar()">
+  
   <label for="cpf">CPF:</label>
   <input type="text" id="cpf" [(ngModel)]="candidato.cpf" name="cpf" required />
 
@@ -19,22 +20,24 @@
 
   <button type="submit" [disabled]="candidatoForm.invalid">Cadastrar</button>
 </form> 
-<!--  
-<div *ngIf="candidatoCadastrado">
+ 
+<!-- <div *ngIf="candidatoCadastrado">
   <h3>Candidato Cadastrado:</h3>
   <p><strong>CPF:</strong> {{ candidatoCadastrado.cpf }}</p>
   <p><strong>Nome:</strong> {{ candidatoCadastrado.nome }}</p>
   <p><strong>Email:</strong> {{ candidatoCadastrado.email }}</p>
-</div>
+</div> -->
 
 
-<button (click)="listarCandidaturas(candidato.candidaturas || [])">Listar candidaturas</button>
+<!-- LISTAR CANDIDATURAS -->
+
+<!-- <button (click)="listarCandidaturas([1,4,5])">Listar candidaturas</button>
 
 <ul>
     <li *ngFor="let candidatura of candidaturas">
         {{candidatura.id}} - {{candidatura.titulo}} - {{candidatura.salario}}
     </li>
-</ul> -->
+</ul>  -->
 
 <!-- BUSCAR CANDIDATOS -->
 
@@ -89,3 +92,5 @@
 
   <button type="submit">Candidatar</button>
 </form> -->
+
+<!-- <button (click)="verificarCPF('1234423423')">verifica</button> -->

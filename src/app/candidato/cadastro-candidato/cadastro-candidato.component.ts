@@ -12,7 +12,7 @@ import { FormsModule } from '@angular/forms';
   styleUrl: './cadastro-candidato.component.css'
 })
 export class CadastroCandidatoComponent {
-  candidato: Candidato = new Candidato('','', '', '',[], []); // Inicia o modelo vazio
+  candidato: Candidato = new Candidato('', '', ''); // Inicia o modelo vazio
   candidaturas : Vaga[] | null | undefined;
 
   constructor(private candidatoService: CandidatoService) {}
@@ -20,6 +20,7 @@ export class CadastroCandidatoComponent {
   cadastrar() {
     this.candidatoService.cadastrar(this.candidato).subscribe({
       next: (candidato) => {
+        // this.candidato.id = this.candidatoService.gerarIDCandidato();
         this.candidato = candidato;
         console.log('Candidato cadastrado:', candidato);
       },
@@ -74,6 +75,8 @@ export class CadastroCandidatoComponent {
       }
     });
   }
+
+  
 }
 
 

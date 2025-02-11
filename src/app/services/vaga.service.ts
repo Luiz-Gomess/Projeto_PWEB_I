@@ -17,14 +17,35 @@ export class VagaService {
   }
 
   buscarVaga(id: number): Observable<Vaga | null> {
-    return this.http.get<Vaga[]>(`${this.apiUrl}?id=${id}`).pipe(
-      map(vagas => (vagas.length > 0 ? vagas[0] : null)) // Retorna a vaga ou null
-    );
+    return this.http.get<Vaga>(`${this.apiUrl}/${id}`);
   }
   
   atualizarVaga(vaga: Vaga): Observable<Vaga> {
     return this.http.put<Vaga>(`${this.apiUrl}/${vaga.id}`,vaga)
   }
 
-  
+  criarVaga(vaga: Vaga): Observable<Vaga>{
+    return this.http.post<Vaga>(this.apiUrl, vaga);
+  }  
+
+  deletarVaga(id:number): Observable<any>{
+    return this.http.delete(`${this.apiUrl}/${id}`);
+  }
+
+  //Verifica se a vaga existe
+  verificacaoVaga(id: number): Observable<boolean>{
+    return this.buscarVaga(id).pipe(
+      map((vaga) => {
+        return vaga ? true : false;
+      })
+    )
+  }
+
+  //Gera um id para a vaga
+  gerarIdVaga():Observable<number>{
+  return this.listarVagas().pipe(
+    map((vagas) => {
+      return vagas.length +1;
+    })
+  )}
 }
