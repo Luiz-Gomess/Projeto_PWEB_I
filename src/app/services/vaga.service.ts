@@ -1,6 +1,6 @@
 import { Injectable } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
-import { Observable, map } from 'rxjs';
+import { Observable, map, switchMap } from 'rxjs';
 import { Vaga } from '../models/vaga';
 
 @Injectable({
@@ -16,7 +16,7 @@ export class VagaService {
     return this.http.get<Vaga[]>(this.apiUrl);
   }
 
-  buscarVaga(id: number): Observable<Vaga | null> {
+  buscarVaga(id: string): Observable<Vaga | null> {
     return this.http.get<Vaga>(`${this.apiUrl}/${id}`);
   }
   
@@ -25,15 +25,20 @@ export class VagaService {
   }
 
   criarVaga(vaga: Vaga): Observable<Vaga>{
-    return this.http.post<Vaga>(this.apiUrl, vaga);
+    return this.gerarIdVaga().pipe(
+      switchMap((id) => {
+        vaga.id = id;
+        return this.http.post<Vaga>(this.apiUrl, vaga);
+      })
+    )
   }  
 
-  deletarVaga(id:number): Observable<any>{
+  deletarVaga(id:string): Observable<any>{
     return this.http.delete(`${this.apiUrl}/${id}`);
   }
 
   //Verifica se a vaga existe
-  verificacaoVaga(id: number): Observable<boolean>{
+  verificacaoVaga(id: string): Observable<boolean>{
     return this.buscarVaga(id).pipe(
       map((vaga) => {
         return vaga ? true : false;

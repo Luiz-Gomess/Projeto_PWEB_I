@@ -59,13 +59,13 @@ export class CandidatoService {
     );
   }
 
-  listarCandidaturas(listaIDSVagas: number[]): Observable<Vaga[]> {
+  listarCandidaturas(listaIDSVagas: string[]): Observable<Vaga[]> {
     return this.vagaService.listarVagas().pipe(
-      map((vagas) => vagas.filter(vaga => listaIDSVagas.includes(Number(vaga.id)))) // Filtra os IDs desejados
+      map((vagas) => vagas.filter(vaga => listaIDSVagas.includes(vaga.id))) // Filtra os IDs desejados
     );
   }
 
-  candidatar(idVaga: number, cpfCandidato: string): Observable<any> {
+  candidatar(idVaga: string, cpfCandidato: string): Observable<any> {
     return this.vagaService.buscarVaga(idVaga).pipe(
       switchMap((vaga) => 
         this.buscarCandidato(cpfCandidato).pipe(
@@ -89,7 +89,7 @@ export class CandidatoService {
     );
   }
   
-  removerCandidatura(idVaga: number, cpfCandidato: string): Observable<any>{
+  removerCandidatura(idVaga: string, cpfCandidato: string): Observable<any>{
     return this.vagaService.buscarVaga(idVaga).pipe(
       switchMap((vaga) => 
         this.buscarCandidato(cpfCandidato).pipe(

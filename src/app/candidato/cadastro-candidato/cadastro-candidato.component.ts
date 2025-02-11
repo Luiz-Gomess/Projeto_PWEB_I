@@ -50,11 +50,11 @@ export class CadastroCandidatoComponent {
     });
   }
 
-  listarCandidaturas(listaIDSVagas : number[]){
+  listarCandidaturas(listaIDSVagas : string[]){
     this.candidatoService.listarCandidaturas(listaIDSVagas).subscribe(candidaturas => this.candidaturas = candidaturas);
   }
 
-  candidatar(idVaga:number) {
+  candidatar(idVaga:string) {
     this.candidatoService.candidatar(idVaga, this.candidato.cpf).subscribe({
       next: () => {
        console.log( 'Candidato cadastrado na vaga com sucesso!');
@@ -65,7 +65,7 @@ export class CadastroCandidatoComponent {
     });
   }
 
-  removerCandidatura(idVaga:number){
+  removerCandidatura(idVaga:string){
     this.candidatoService.removerCandidatura(idVaga, this.candidato.cpf).subscribe({
       next: () => {
        console.log( 'Candidatura removida com sucesso!');
