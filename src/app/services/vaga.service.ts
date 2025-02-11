@@ -50,7 +50,11 @@ export class VagaService {
   gerarIdVaga():Observable<string>{
   return this.listarVagas().pipe(
     map((vagas) => {
-      return String(vagas.length +1);
+      if(vagas.length === 0){
+        return '1';
+      }else{
+        return String(Number(vagas[vagas.length-1].id) + 1);
+      }
     })
   )}
 }
