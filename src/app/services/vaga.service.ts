@@ -42,10 +42,10 @@ export class VagaService {
   }
 
   //Gera um id para a vaga
-  gerarIdVaga():Observable<number>{
+  gerarIdVaga():Observable<string>{
   return this.listarVagas().pipe(
     map((vagas) => {
-      return vagas.length +1;
+      return String(vagas.length +1);
     })
   )}
 }
