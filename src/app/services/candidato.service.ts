@@ -46,19 +46,20 @@ export class CandidatoService {
       })
     );
   }
-
   cadastrar(candidato: Candidato): Observable<Candidato> {
     return this.buscarCandidato(candidato.cpf).pipe(
-      switchMap((candidatoVerificado) => {
-        if(candidatoVerificado instanceof Candidato){
-          return throwError(() => new Error('CPF já cadastrado'));
-        } else{
+      switchMap(() => {
+        return throwError(() => new Error('CPF já cadastrado'));
+      }),
+      catchError((error) => {
+        if (error.message === 'Candidato não encontrado') {
           return this.http.post<Candidato>(this.apiUrl, candidato);
         }
+        return throwError(() => error);
       })
-    )
+    );
   }
-
+  
   
   deletarPerfil(cpf: string): Observable<any> {
     return this.buscarCandidato(cpf).pipe(
@@ -111,7 +112,7 @@ export class CandidatoService {
               return throwError(() => new Error('Vaga ou Candidato não encontrado'));
             }
             else if (!candidato.candidaturas.includes(idVaga)){
-              return throwError(() => new Error('Candidato não está cadastrado nesta vaga'));
+              return throwError(() => new Error('Candidato não está candidatado nesta vaga'));
             }
 
             const candIndex = vaga.candidatos.indexOf(candidato.cpf)

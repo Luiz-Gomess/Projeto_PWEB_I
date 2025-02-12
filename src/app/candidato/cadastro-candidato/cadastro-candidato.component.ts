@@ -80,6 +80,7 @@ export class CadastroCandidatoComponent {
     console.log(cpf, senha)
     this.candidatoService.logar(cpf, senha).subscribe({
       next: (candidato) => {
+        this.candidato = candidato;
         console.log('Candidato logado:', candidato);
       },
       error: (err) => {

@@ -1,11 +1,11 @@
-<p>Nome : {{candidato.nome}}</p>
+<!-- <p>Nome : {{candidato.nome}}</p> -->
 <!-- <p> Candidaturas : {{candidato?.candidaturas}}</p> -->
 
 <!-- <button (click)="buscarCandidato('1234')">Buscar Candidato</button> -->
 
 <!-- Cadastro -->
-
- <!-- <h2>Cadastrar Candidato</h2>
+<!-- 
+ <h2>Cadastrar Candidato</h2>
 
 <form #candidatoForm="ngForm" (ngSubmit)="cadastrar()">
   
@@ -29,15 +29,7 @@
 </div> -->
 
 
-<!-- LISTAR CANDIDATURAS -->
 
-<!-- <button (click)="listarCandidaturas([1,4,5])">Listar candidaturas</button>
-
-<ul>
-    <li *ngFor="let candidatura of candidaturas">
-        {{candidatura.id}} - {{candidatura.titulo}} - {{candidatura.salario}}
-    </li>
-</ul>  -->
 
 <!-- BUSCAR CANDIDATOS -->
 
@@ -68,7 +60,7 @@
   <button type="submit" [disabled]="deletarForm.invalid">Deletar</button>
 </form> -->
 <!-- <h2>Candidatar</h2>
-<form #candidaturaForm="ngForm" (ngSubmit)="candidatar(+vagaInput.value)">
+<form #candidaturaForm="ngForm" (ngSubmit)="candidatar(vagaInput.value)">
   <label for="cpf">CPF do Candidato:</label>
   <input id="cpf" #cpfInput type="text" name="cpf" required />
 
@@ -83,20 +75,20 @@
 </div> -->
 
 <!-- <h2>Remover candidatura</h2>
-<form #candidaturaForm="ngForm" (ngSubmit)="removerCandidatura(+vagaInput.value)">
+<form #candidaturaForm="ngForm" (ngSubmit)="removerCandidatura(vagaInput.value)">
   <label for="cpf">CPF do Candidato:</label>
   <input id="cpf" #cpfInput type="text" name="cpf" required />
 
   <label for="vaga">ID da Vaga:</label>
   <input id="vaga" #vagaInput type="number" name="vaga" required />
 
-  <button type="submit">Candidatar</button>
+  <button type="submit">Remover Candidatura</button>
 </form> -->
 
 <!-- <button (click)="verificarCPF('1234423423')">verifica</button> -->
 
 <!-- Login -->
-
+<!-- 
 <h2>Login</h2>
 <form (submit)="login(candidato.cpf, candidato.senha)">
     <label for="cpf">CPF:</label>
@@ -106,4 +98,14 @@
     <input type="password" id="senha" [(ngModel)]="candidato.senha" name="senha" required>
     <br>
     <button type="submit">Logar</button>
-</form>
+</form> -->
+
+<!-- LISTAR CANDIDATURAS -->
+
+<!-- <button (click)="listarCandidaturas(candidato.candidaturas)">Listar candidaturas</button>
+
+<ul>
+    <li *ngFor="let candidatura of candidaturas">
+        {{candidatura.id}} - {{candidatura.titulo}} - {{candidatura.salario}}
+    </li>
+</ul>  -->

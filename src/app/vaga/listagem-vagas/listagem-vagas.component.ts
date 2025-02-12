@@ -13,6 +13,7 @@ import { FormsModule } from '@angular/forms';
 export class ListagemVagasComponent implements OnInit  {
   vagas: Vaga[] = [];
   vaga: Vaga = new Vaga('', '', '', 0)
+  vagaAserEditada: Vaga = new Vaga('', '', '', 0)
 
   constructor(private vagaService: VagaService) { } // Injete o serviço
 
@@ -29,6 +30,27 @@ export class ListagemVagasComponent implements OnInit  {
         console.log('Vaga cadastrada:', vaga);
       },
       error: (err) => console.error('Erro ao cadastrar vaga:', err)
+    });
+  }
+
+  deletarVaga(id:string) : void {
+    this.vagaService.deletarVaga(id).subscribe({
+      next: () => {
+        console.log('Vaga deletada:', id);
+      },
+      error: (err) => {
+        console.error('Erro ao deletar vaga:', err);
+      }
+    });
+  }
+
+  editarVaga(vaga: Vaga): void {
+    this.vagaService.atualizarVaga(vaga).subscribe({
+      next: (vaga) => {
+      console.log(vaga.id)
+        console.log('Vaga atualizada:', vaga);
+      },
+      error: (err) => console.error('Erro ao atualizar vaga:', err)
     });
   }
 }

@@ -5,6 +5,6 @@ export class Candidato{
         public email : string,
         public senha : string,
         public habilidades: string[] = [],
-        public candidaturas : number[] = [],
+        public candidaturas : string[] = [],
     ){}
 }
