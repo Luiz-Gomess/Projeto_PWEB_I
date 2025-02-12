@@ -24,7 +24,7 @@ export class CandidatoService {
         if (candidatos.length > 0) {
           return candidatos[0];
         } else {
-          throw new Error('Candidato não encontrado'); // Lança erro corretamente
+          throw new Error('Candidato não encontrado'); 
         }
       })
     );
@@ -36,7 +36,7 @@ export class CandidatoService {
 
   logar(cpf: string, senha: string): Observable<Candidato> {
     return this.buscarCandidato(cpf).pipe(
-      catchError((error) => throwError(() => new Error(error.message))), // Propaga erro corretamente
+      catchError((error) => throwError(() => new Error(error.message))), 
       switchMap((candidato) => {
         if (candidato.senha === senha) {
           return of(candidato);
@@ -75,7 +75,7 @@ export class CandidatoService {
 
   listarCandidaturas(listaIDSVagas: string[]): Observable<Vaga[]> {
     return this.vagaService.listarVagas().pipe(
-      map((vagas) => vagas.filter(vaga => listaIDSVagas.includes(vaga.id))) // Filtra os IDs desejados
+      map((vagas) => vagas.filter(vaga => listaIDSVagas.includes(vaga.id))) 
     );
   }
 
