@@ -1,0 +1,23 @@
+<div class="login-container">
+    <img src="/login.jpg" alt="">
+    <form (ngSubmit)="onSubmit()">
+        <h2>Entre com sua conta</h2>
+        <div>
+          <label for="cpf">CPF:</label>
+          <input type="text" id="cpf" [(ngModel)]="candidato.cpf" name="cpf" required>
+        </div>
+      
+        <div>
+          <label for="senha">Senha:</label>
+          <input type="password" id="senha" [(ngModel)]="candidato.senha" name="senha" required>
+        </div>
+
+        <div *ngIf="message" class="message" [ngClass]="{'success': messageType === 'success', 'error': messageType === 'error'}">
+            {{ message }}
+        </div>
+      
+        <button type="submit">Entrar</button>
+        <p [routerLink]="['/cadastro-candidato']">Não tem conta? Cadastre - se</p>
+      </form>
+</div>
+

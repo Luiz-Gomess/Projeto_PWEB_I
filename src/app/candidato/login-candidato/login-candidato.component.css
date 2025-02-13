@@ -1,0 +1,103 @@
+.login-container {
+    width: 100%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    padding-top: 50px;
+
+    & img {
+        height: 70vh;
+        border-radius: 8px 0 0 8px;
+    }
+}
+
+h2 {
+    text-align: center;
+    justify-self: flex-start;
+    margin-bottom: 70px;
+    position: absolute;
+    top: 30px;
+    left: 25%;
+}
+
+  form {
+    position: relative;
+    background-color: var(--secondary);
+    border-radius: 0 8px 8px 0;
+    width: 30%;
+    height: 70vh;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    gap: 1rem;
+    padding: 16px;
+  }
+  
+  form div {
+    display: flex;
+    flex-direction: column;
+    gap: 0.5rem;
+  }
+  
+  label {
+    font-weight: bold;
+    color: var(--text-color);
+  }
+  
+  input[type="text"],
+  input[type="password"] {
+    padding: 0.75rem;
+    border: 1px solid var(--type-complement);
+    border-radius: 4px;
+    font-size: 1rem;
+    background-color: var(--secondary);
+    color: var(--text-color);
+    transition: border-color 0.3s ease;
+  }
+  
+  input[type="text"]:focus,
+  input[type="password"]:focus {
+    border-color: var(--primary);
+    outline: none;
+  }
+  
+  button {
+    padding: 0.75rem 1.5rem;
+    border: none;
+    border-radius: 4px;
+    font-size: 1rem;
+    cursor: pointer;
+    background-color: var(--primary);
+    color: var(--secondary);
+    transition: background-color 0.3s ease;
+  }
+  
+  button:hover {
+    background-color: var(--corporation);
+  }
+
+  p {
+    text-align: center;
+    cursor: pointer;
+  }
+
+  p:hover {
+    color: var(--primary);
+    transition: 0.3s;
+  }
+  
+  .message {
+    padding: 1rem;
+    border-radius: 4px;
+    margin-top: 1rem;
+    text-align: center;
+    font-weight: bold;
+  }
+  
+  .message.success {
+    color: var(--success);
+  }
+  
+  .message.error {
+    color: var(--error);
+  }
