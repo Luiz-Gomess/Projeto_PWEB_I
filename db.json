@@ -14,9 +14,7 @@
         "HTML",
         "Git"
       ],
-      "candidatos": [
-        "1234"
-      ]
+      "candidatos": []
     },
     {
       "id": "2",
@@ -47,9 +45,7 @@
         "Power BI",
         "Excel Avançado"
       ],
-      "candidatos": [
-        "1234"
-      ]
+      "candidatos": []
     },
     {
       "id": "4",
@@ -65,9 +61,7 @@
         "CI/CD",
         "AWS"
       ],
-      "candidatos": [
-        "12345678910"
-      ]
+      "candidatos": []
     },
     {
       "id": "5",
@@ -82,9 +76,7 @@
         "Design Thinking",
         "User Research"
       ],
-      "candidatos": [
-        "12345678910"
-      ]
+      "candidatos": []
     },
     {
       "id": "6",
@@ -103,20 +95,6 @@
         "TailwindCss"
       ],
       "candidatos": []
-    },
-    {
-      "id": "13",
-      "titulo": "asads",
-      "descricao": "",
-      "salario": 0,
-      "candidatos": []
-    },
-    {
-      "id": "13",
-      "titulo": "asads",
-      "descricao": "",
-      "salario": 0,
-      "candidatos": []
     }
   ],
   "candidatos": [
@@ -125,9 +103,7 @@
       "nome": "luiz",
       "email": "email@email",
       "senha": "123",
-      "candidaturas": [
-        7
-      ],
+      "candidaturas": [],
       "id": "f45d"
     },
     {
@@ -136,10 +112,7 @@
       "nome": "luizinho",
       "email": "email@email",
       "senha": "",
-      "candidaturas": [
-        "4",
-        "5"
-      ]
+      "candidaturas": []
     },
     {
       "id": "b7aa",
@@ -165,15 +138,6 @@
       "nome": "lucas",
       "email": "lucaskaique742@gmail.com",
       "senha": "122312312312",
-      "habilidades": [],
-      "candidaturas": []
-    },
-    {
-      "id": "8d47",
-      "cpf": "08243399322",
-      "nome": "lucas",
-      "email": "lucaskaique742@gmail.com",
-      "senha": "llllllll",
       "habilidades": [],
       "candidaturas": []
     }
