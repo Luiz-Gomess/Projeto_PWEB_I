@@ -1,0 +1,16 @@
+<button mat-button [matMenuTriggerFor]="menu">
+    <mat-icon>menu</mat-icon>
+</button>
+  
+  <mat-menu #menu="matMenu">
+    <button mat-menu-item (click)="selecionarItem('Editar')">
+      <mat-icon>edit</mat-icon> Editar Perfil
+    </button>
+   
+    <button mat-menu-item (click)="selecionarItem('Sair')">
+      <mat-icon>logout</mat-icon> Sair
+    </button>
+    <button mat-menu-item (click)="selecionarItem('Excluir')">
+        <mat-icon>delete</mat-icon> Excluir Conta
+    </button>
+  </mat-menu>

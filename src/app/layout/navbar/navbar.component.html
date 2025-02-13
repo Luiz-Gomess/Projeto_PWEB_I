@@ -1,0 +1,13 @@
+<nav class="navbar">
+    <img src="/ContratAe.svg" class="navbar-logo" alt="Logo da empresa ContratAe" 
+    (click)="navigateToHome()"/>
+
+    <ul class="navbar-links" *ngIf="!isAuthenticated">
+        <li [routerLink]="['/login-candidato']">Entrar</li>
+        <li [routerLink]="['/cadastro-candidato']">Criar conta</li>
+    </ul>
+
+    <div *ngIf="isAuthenticated">
+        <app-menu />
+    </div>
+</nav>
