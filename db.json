@@ -122,15 +122,6 @@
       "candidaturas": []
     },
     {
-      "id": "b7aa",
-      "cpf": "1234",
-      "nome": "luizteste",
-      "email": "teste@teste",
-      "senha": "",
-      "habilidades": [],
-      "candidaturas": []
-    },
-    {
       "id": "8527",
       "cpf": "08243399323",
       "nome": "Lucas",
@@ -145,6 +136,24 @@
       "nome": "lucas",
       "email": "lucaskaique742@gmail.com",
       "senha": "122312312312",
+      "habilidades": [],
+      "candidaturas": []
+    },
+    {
+      "id": "05c7",
+      "cpf": "715367",
+      "nome": "Luiz Fernando",
+      "email": "luizfernando@email.com",
+      "senha": "123456",
+      "habilidades": [],
+      "candidaturas": []
+    },
+    {
+      "id": "1be5",
+      "cpf": "1234",
+      "nome": "luiz fernando a gomes",
+      "email": "luizfernando@email.com",
+      "senha": "123456",
       "habilidades": [],
       "candidaturas": []
     }
