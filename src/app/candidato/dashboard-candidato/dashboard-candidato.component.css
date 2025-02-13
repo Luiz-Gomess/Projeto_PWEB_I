@@ -1,0 +1,29 @@
+.dashboard-container {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-direction: column;
+    margin: auto;
+    height: 88vh;
+    width: 100%;
+    gap: 20px;
+}
+
+h1 {
+    color: var(--primary);
+}
+
+button {
+    background-color: var(--primary);
+    padding: 10px;
+    color: var(--secondary);
+    border: none;
+    width: 40%;
+    cursor: pointer;
+    border-radius: 5px;
+}
+
+button:hover {
+    background-color: var(--corporation);
+    transition: 0.3s;
+}
