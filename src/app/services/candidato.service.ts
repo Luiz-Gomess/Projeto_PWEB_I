@@ -48,18 +48,18 @@ export class CandidatoService {
   }
 
   cadastrar(candidato: Candidato): Observable<Candidato> {
-    return this.buscarCandidato(candidato.cpf).pipe(
-      switchMap((candidatoVerificado) => {
-        if(candidatoVerificado instanceof Candidato){
+    return this.listarCandidatos().pipe(
+      switchMap((candidatos: Candidato[]) => {
+        const candidatoExistente = candidatos.find(c => c.cpf === candidato.cpf);
+        if (candidatoExistente) {
           return throwError(() => new Error('CPF já cadastrado'));
-        } else{
+        } else {
           return this.http.post<Candidato>(this.apiUrl, candidato);
         }
       })
-    )
+    );
   }
 
-  
   deletarPerfil(cpf: string): Observable<any> {
     return this.buscarCandidato(cpf).pipe(
       switchMap((candidato) => {
