@@ -1,0 +1,41 @@
+<div class="nava-vaga-container">
+    <form (ngSubmit)="onSubmit()">
+        <h2>Criar vaga</h2>
+        <div>
+          <label for="titulo">Título:</label>
+          <input type="text" id="titulo" [(ngModel)]="vaga.titulo" name="titulo" required>
+        </div>
+      
+        <div>
+          <label for="descricao">Descrição:</label>
+          <textarea id="descricao" [(ngModel)]="vaga.descricao" name="descricao" required></textarea>
+        </div>
+      
+        <div>
+          <label for="salario">Salário:</label>
+          <input type="number" id="salario" [(ngModel)]="vaga.salario" name="salario" required>
+        </div>
+      
+        <div>
+          <label for="empresa">Empresa:</label>
+          <input type="text" id="empresa" [(ngModel)]="vaga.empresa" name="empresa" required>
+        </div>
+      
+        <div>
+          <label for="local">Local:</label>
+          <input type="text" id="local" [(ngModel)]="vaga.local" name="local" required>
+        </div>
+      
+        <div>
+          <label for="requisitos">Requisitos:</label>
+          <input type="text" id="requisitos" [(ngModel)]="requisitosInput" name="requisitos" (keyup.enter)="adicionarRequisito()">
+          <button type="button" (click)="adicionarRequisito()">Adicionar Requisito</button>
+          <ul>
+            <li *ngFor="let requisito of vaga.requisitos">{{ requisito }}</li>
+          </ul>
+        </div>
+      
+        <button type="submit">Cadastrar Vaga</button>
+    </form>
+</div>
+
