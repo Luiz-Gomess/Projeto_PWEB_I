@@ -55,7 +55,6 @@ export class CandidatoService {
         } else {
           return this.http.post<Candidato>(this.apiUrl, candidato);
         }
-        return throwError(() => error);
       })
     );
   }
