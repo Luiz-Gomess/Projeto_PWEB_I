@@ -1,14 +1,14 @@
 import { Component, OnInit } from '@angular/core';
-import { MatTableDataSource } from '@angular/material/table';
+import { MatTableDataSource, MatTableModule } from '@angular/material/table';
 import { CandidatoService } from '../../services/candidato.service';
 import { Candidato } from '../../models/candidato';
 import { CommonModule } from '@angular/common';
 
 @Component({
   selector: 'app-lista-candidatos',
-  templateUrl: './lista-candidatos.component.html',
-  imports: [CommonModule],
-  styleUrl: './lista-candidatos.component.css'
+  templateUrl: './listagem-candidato.component.html',
+  imports: [CommonModule, MatTableModule],
+  styleUrl: './listagem-candidato.component.css'
 })
 export class ListagemCandidatoComponent implements OnInit {
   displayedColumns: string[] = ['cpf', 'nome', 'email', 'habilidades', 'acoes'];

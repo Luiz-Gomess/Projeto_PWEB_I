@@ -95,23 +95,30 @@
         "TailwindCss"
       ],
       "candidatos": []
+    },
+    {
+      "id": "7",
+      "titulo": "Vaga de teste",
+      "descricao": "Estou criando uma vaga de teste",
+      "salario": 10000,
+      "empresa": "Empresa ficticia",
+      "local": "Local Fictício",
+      "requisitos": [
+        "R1",
+        "R2",
+        "R3"
+      ],
+      "candidatos": []
     }
   ],
   "candidatos": [
-    {
-      "cpf": "1234",
-      "nome": "luiz",
-      "email": "email@email",
-      "senha": "123",
-      "candidaturas": [],
-      "id": "f45d"
-    },
     {
       "id": "f45d",
       "cpf": "12345678910",
       "nome": "luizinho",
       "email": "email@email",
       "senha": "",
+      "habilidades": [],
       "candidaturas": []
     },
     {
