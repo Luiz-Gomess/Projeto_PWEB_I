@@ -3,80 +3,97 @@
     {
       "id": "1",
       "titulo": "Desenvolvedor Front-End",
-      "descricao": "Desenvolvimento de aplicações web utilizando Angular",
-      "salario": "5000.0",
+      "descricao": "Estamos buscando um desenvolvedor front-end para criar e manter interfaces web modernas e responsivas. O profissional atuará no desenvolvimento de componentes reutilizáveis, garantindo uma excelente experiência do usuário.",
+      "salario": 5000,
+      "empresa": "Tech Solutions",
+      "local": "São Paulo, SP",
+      "requisitos": [
+        "Angular",
+        "TypeScript",
+        "CSS",
+        "HTML",
+        "Git"
+      ],
       "candidatos": []
     },
     {
       "id": "2",
       "titulo": "Desenvolvedor Back-End",
-      "descricao": "Desenvolvimento de aplicações web utilizando Spring Boot",
-      "salario": "5000.0",
+      "descricao": "O profissional será responsável por projetar e implementar APIs escaláveis e eficientes, garantindo a segurança e integridade dos dados. Trabalhará em conjunto com a equipe de front-end para otimizar a comunicação entre serviços.",
+      "salario": 6000,
+      "empresa": "CodeMasters",
+      "local": "Remoto",
+      "requisitos": [
+        "Node.js",
+        "Express",
+        "MongoDB",
+        "Docker",
+        "AWS"
+      ],
+      "candidatos": []
+    },
+    {
+      "id": "3",
+      "titulo": "Analista de Dados",
+      "descricao": "Buscamos um analista de dados para coletar, organizar e interpretar grandes volumes de dados. O profissional ajudará na criação de relatórios e dashboards interativos para apoiar a tomada de decisões estratégicas.",
+      "salario": 7000,
+      "empresa": "Data Insights",
+      "local": "Belo Horizonte, MG",
+      "requisitos": [
+        "SQL",
+        "Python",
+        "Power BI",
+        "Excel Avançado"
+      ],
       "candidatos": []
     },
     {
       "id": "4",
-      "titulo": "Desenvolvedor Mobile",
-      "descricao": "Desenvolvimento de aplicações moveis utilizando Kotlin",
-      "salario": "5000.0",
+      "titulo": "Engenheiro DevOps",
+      "descricao": "O engenheiro DevOps será responsável por automatizar e otimizar processos de desenvolvimento e deploy de aplicações. Trabalhará com ferramentas de infraestrutura como código e segurança em ambientes de produção.",
+      "salario": 9000,
+      "empresa": "Cloud Experts",
+      "local": "Curitiba, PR",
+      "requisitos": [
+        "Docker",
+        "Kubernetes",
+        "Terraform",
+        "CI/CD",
+        "AWS"
+      ],
       "candidatos": []
     },
     {
       "id": "5",
-      "titulo": "Desenvolvedor FULLSTACK",
-      "descricao": "Desenvolvimento de aplicações moveis utilizando Kotlin",
-      "salario": "5000.0",
+      "titulo": "Designer UI/UX",
+      "descricao": "Procuramos um designer UI/UX criativo para desenvolver interfaces intuitivas e visuais atraentes para web e mobile. O profissional conduzirá pesquisas com usuários e prototipará soluções inovadoras para nossos produtos digitais.",
+      "salario": 5500,
+      "empresa": "Creative Studio",
+      "local": "Rio de Janeiro, RJ",
+      "requisitos": [
+        "Figma",
+        "Adobe XD",
+        "Design Thinking",
+        "User Research"
+      ],
       "candidatos": []
     },
     {
-      "id": "7",
-      "titulo": "Desenvolvedor PYTHON",
-      "descricao": "Desenvolvimento de aplicações moveis utilizando Kotlin",
-      "salario": "5000.0",
-      "candidatos": [
-        "1234"
-      ]
-    },
-    {
-      "id": "8",
-      "titulo": "Desenvolvedor SWIFT",
-      "descricao": "Desenvolvimento de aplicações moveis utilizando Kotlin",
-      "salario": "5000.0",
-      "candidatos": []
-    },
-    {
-      "id": "8",
-      "titulo": "fasdfasf",
-      "descricao": "safasfasdf",
-      "salario": 22220,
-      "candidatos": []
-    },
-    {
-      "id": "9",
-      "titulo": "fasdfasf",
-      "descricao": "safasfasdf",
-      "salario": 22220,
-      "candidatos": []
-    },
-    {
-      "id": "10",
-      "titulo": "fasdfasf",
-      "descricao": "safasfasdf",
-      "salario": 22220,
-      "candidatos": []
-    },
-    {
-      "id": "11",
-      "titulo": "teste",
-      "descricao": "id deve somar +1 a ultima vaga",
-      "salario": 10,
-      "candidatos": []
-    },
-    {
-      "id": "12",
-      "titulo": "teste2",
-      "descricao": "id deve somar +1 a ultima vaga",
-      "salario": 10,
+      "id": "6",
+      "titulo": "Desenvolvedor Front End Jr",
+      "descricao": "Estamos em busca de um Desenvolvedor Front-End Júnior para integrar nosso time de tecnologia. O profissional será responsável por desenvolver e manter interfaces web responsivas e interativas, garantindo uma experiência de usuário fluida e intuitiva. Trabalhará em conjunto com designers e desenvolvedores back-end para transformar designs em código funcional, otimizar desempenho e assegurar compatibilidade entre diferentes navegadores e dispositivos.",
+      "salario": 3500,
+      "empresa": "Securitas Tech",
+      "local": "Remoto",
+      "requisitos": [
+        "JavaScript",
+        "Angular",
+        "Css",
+        "Html",
+        "typeScript",
+        "Node js",
+        "TailwindCss"
+      ],
       "candidatos": []
     }
   ],
@@ -85,7 +102,7 @@
       "cpf": "1234",
       "nome": "luiz",
       "email": "email@email",
-      "senha":"123",
+      "senha": "123",
       "candidaturas": [
         7
       ],
@@ -109,10 +126,29 @@
       "candidaturas": []
     },
     {
-      "id": "a0b4",
-      "cpf": "123456",
-      "nome": "Teste",
-      "email": "adf@aee.com",
+      "id": "8527",
+      "cpf": "08243399323",
+      "nome": "Lucas",
+      "email": "lucaskaique742@gmail.com",
+      "senha": "1234567",
+      "habilidades": [],
+      "candidaturas": []
+    },
+    {
+      "id": "1176",
+      "cpf": "082.433.993-21",
+      "nome": "lucas",
+      "email": "lucaskaique742@gmail.com",
+      "senha": "122312312312",
+      "habilidades": [],
+      "candidaturas": []
+    },
+    {
+      "id": "8d47",
+      "cpf": "08243399322",
+      "nome": "lucas",
+      "email": "lucaskaique742@gmail.com",
+      "senha": "llllllll",
       "habilidades": [],
       "candidaturas": []
     }

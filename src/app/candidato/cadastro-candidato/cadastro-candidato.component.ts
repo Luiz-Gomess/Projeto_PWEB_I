@@ -4,37 +4,33 @@ import { Candidato } from '../../models/candidato';
 import { Vaga } from '../../models/vaga';
 import { CommonModule } from '@angular/common';
 import { FormsModule } from '@angular/forms';
+import { Router, RouterLink } from '@angular/router';
+import { CandidatoStateService } from '../../services/candidato-state.service';
 
 @Component({
   selector: 'app-cadastro-candidato',
-  imports: [CommonModule, FormsModule],
+  imports: [CommonModule, FormsModule, RouterLink],
   templateUrl: './cadastro-candidato.component.html',
   styleUrl: './cadastro-candidato.component.css'
 })
 export class CadastroCandidatoComponent {
-  candidato: Candidato = new Candidato('', '','', ''); // Inicia o modelo vazio
+  candidato: Candidato = new Candidato('', '','', '');
   candidaturas : Vaga[] | null | undefined;
-
-  constructor(private candidatoService: CandidatoService) {}
+  menssagem: string = "";
+  
+  constructor(private candidatoService: CandidatoService, private router: Router, private candidatoStateService: CandidatoStateService) {}
 
   cadastrar() {
     this.candidatoService.cadastrar(this.candidato).subscribe({
       next: (candidato) => {
-        // this.candidato.id = this.candidatoService.gerarIDCandidato();
         this.candidato = candidato;
-        console.log('Candidato cadastrado:', candidato);
+        this.candidatoStateService.setCandidato(candidato);
+        this.router.navigate(['/candidato-dashboard']);
       },
-      error: (err) => console.error('Erro ao cadastrar candidato:', err)
-    });
-  }
 
-  deletarCandidato(cpf: string): void {
-    this.candidatoService.deletarPerfil(cpf).subscribe({
-      next: () => {
-        console.log('Candidato deletado:', cpf);
-      },
-      error: (err) => {
-        console.error('Erro ao deletar candidato:', err);
+      error: (err) =>  {
+        console.error('Erro ao cadastrar candidato:', err)
+        this.menssagem = err
       }
     });
   }
