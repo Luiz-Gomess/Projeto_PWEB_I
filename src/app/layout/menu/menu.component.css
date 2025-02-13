@@ -1,0 +1,9 @@
+button[mat-button] .mat-icon {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 100px;
+    height: 30px;
+    font-size: 40px;
+    color: var(--primary);
+}

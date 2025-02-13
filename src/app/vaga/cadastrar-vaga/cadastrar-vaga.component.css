@@ -1,0 +1,123 @@
+.nava-vaga-container {
+    width: 100%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+  form {
+    margin-top: 70px;
+    width: 80%;
+    background-color: var(--secondary);
+    display: flex;
+    flex-direction: column;
+    flex-wrap: wrap;
+    gap: 1rem;
+    padding: 16px;
+    border-radius: 8px;
+    margin-bottom: 40px;
+  }
+
+  h2 {
+    margin-bottom: 20px;
+  }
+  
+  form div {
+    display: flex;
+    flex-direction: column;
+    gap: 0.5rem;
+  }
+  
+  label {
+    font-weight: bold;
+    color: var(--text-color);
+  }
+  
+  input[type="text"],
+  input[type="number"],
+  textarea {
+    padding: 5px;
+    border-radius: 4px;
+    background-color: var(--secondary);
+    border: 2px solid #ccc;
+    color: var(--text-color);
+    transition: border-color 0.3s ease;
+  }
+
+  textarea {
+    height: 100px;
+  }
+  
+  input[type="text"]:focus,
+  input[type="number"]:focus,
+  textarea:focus {
+    border-color: var(--primary);
+    outline: none;
+  }
+  
+  button {
+    padding: 0.75rem 1.5rem;
+    border: none;
+    border-radius: 4px;
+    font-size: 1rem;
+    cursor: pointer;
+    transition: background-color 0.3s ease;
+  }
+  
+  button[type="submit"] {
+    background-color: var(--primary);
+    color: var(--secondary);
+  }
+  
+  button[type="submit"]:hover {
+    background-color: var(--primary);
+  }
+  
+  button[type="button"] {
+    background-color: var(--corporation);
+    color: var(--secondary);
+    margin-top: 0.5rem;
+    padding: 10px;
+    width: 150px;
+    font-size: 0.8rem;
+  }
+  
+  button[type="button"]:hover {
+    background-color: var(--primary);
+  }
+  
+  ul {
+    list-style-type: none;
+    padding: 0;
+    margin: 0;
+    display: flex;
+    gap: 10px;
+    flex-wrap: wrap;
+  }
+  
+  ul li {
+    background-color: var(--type-complement);
+    padding: 5px 10px;
+    border-radius: 50px;
+    margin-top: 0.5rem;
+    color: var(--text-color);
+  }
+  
+  /* Mensagens de erro ou sucesso */
+  .message {
+    padding: 1rem;
+    border-radius: 4px;
+    margin-top: 1rem;
+    text-align: center;
+    font-weight: bold;
+  }
+  
+  .message.success {
+    background-color: var(--success);
+    color: var(--secondary);
+  }
+  
+  .message.error {
+    background-color: var(--error);
+    color: var(--secondary);
+  }

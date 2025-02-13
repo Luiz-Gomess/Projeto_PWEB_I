@@ -1,0 +1,66 @@
+<app-navbar />
+<main>
+    <section class="search-section">
+        <h2>Conectando Talentos ao Futuro Profissional.</h2>
+
+
+        <label for="search-input">Busque Sua Próxima Oportunidade – Explore Vagas <br />que Combinam com Seu Talento!</label>
+        <div class="search-area">
+            <input type="text" id="search-input" placeholder="Encontrar vagas">
+            <button class="btn" (click)="navigateToListagemVagas()">Buscar</button>
+        </div>
+        
+    </section>
+
+    <!-- <section class="about">
+        <h2 class="subtitle">Quem somos</h2>
+
+        <div class="about-history">
+            <div class="about-text">
+                <div>
+                    <p>Em 2023, a Securitas Tech lançou a contratAe, uma plataforma inovadora que revoluciona o recrutamento. Aqui, a tecnologia se une à empatia para valorizar não só o currículo, mas também as paixões e competências únicas de cada profissional. Nosso objetivo é conectar pessoas ambiciosas a empresas visionárias, criando matches que transformam carreiras e constroem o futuro do trabalho. Descubra novas oportunidades e faça parte dessa revolução!
+                    </p>
+                </div>
+
+            </div>
+            
+            <img src="/home.jpg" alt="">
+        </div>
+        
+    </section> -->
+
+    <section class="last-update">
+        <h2 class="subtitle">Vagas em destaque</h2>
+
+        <div class="last-update-list">
+            <ngx-slick-carousel class="carousel" [config]="slideConfig">
+                <div ngxSlickItem *ngFor="let vaga of vagas" class="slide">
+                    <app-card-vaga [vaga]="vaga"></app-card-vaga>
+                </div>
+            </ngx-slick-carousel>
+        </div>
+    </section>
+
+    <section class="partners-section">
+        <h2 class="subtitle">Está contratando ?</h2>
+
+        <div class="partners-text">
+            <div>
+                <p>
+                    <strong>Seja um parceiro da <span class="highlight">contratAe</span></strong> e tenha acesso a uma ampla rede de talentos qualificados, preparados para impulsionar o crescimento e a inovação do seu negócio. 
+                    Ao se juntar a nós, você contará com profissionais capacitados e alinhados às necessidades do mercado, prontos para agregar valor à sua empresa.
+                </p>
+            
+                <p>
+                    <strong>Venha fazer parte dessa transformação!</strong> Conheça nossas empresas parceiras e descubra como a <span class="highlight">contratAe</span> pode ajudar sua empresa a encontrar os melhores talentos. 
+                    Juntos, podemos construir um futuro mais <strong>justo, acessível e inovador</strong> para o mercado de trabalho!
+                </p>
+                 <button class="btn-new-vaga" (click)="navigateToNewVaga()">Anunciar vaga</button>
+            </div>
+            <img src="/logos.png" class="partners" alt="Empresas parceiras da contratAe">
+        </div>
+        
+    </section>
+    
+</main>
+<app-footer />

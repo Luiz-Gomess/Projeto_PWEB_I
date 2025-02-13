@@ -47,20 +47,18 @@ export class CandidatoService {
     );
   }
   cadastrar(candidato: Candidato): Observable<Candidato> {
-    return this.buscarCandidato(candidato.cpf).pipe(
-      switchMap(() => {
-        return throwError(() => new Error('CPF já cadastrado'));
-      }),
-      catchError((error) => {
-        if (error.message === 'Candidato não encontrado') {
+    return this.listarCandidatos().pipe(
+      switchMap((candidatos: Candidato[]) => {
+        const candidatoExistente = candidatos.find(c => c.cpf === candidato.cpf);
+        if (candidatoExistente) {
+          return throwError(() => new Error('CPF já cadastrado'));
+        } else {
           return this.http.post<Candidato>(this.apiUrl, candidato);
         }
         return throwError(() => error);
       })
     );
   }
-  
-  
   deletarPerfil(cpf: string): Observable<any> {
     return this.buscarCandidato(cpf).pipe(
       switchMap((candidato) => {

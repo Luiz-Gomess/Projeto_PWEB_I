@@ -1,0 +1,101 @@
+.fatFooter {
+    background-color: #2a393f;
+    color: #fff;
+    padding: 40px 20px 10px 20px;
+  }
+  
+  .container {
+    display: flex;
+    justify-content: space-between;
+    flex-wrap: wrap;
+    max-width: 1200px;
+    margin: 0 auto;
+  }
+  
+  .column {
+    flex: 1;
+    min-width: 200px;
+    margin-bottom: 20px;
+  }
+  
+  .column h3 {
+    margin-bottom: 20px;
+    font-size: 18px;
+  }
+  
+  .column ul {
+    list-style: none;
+    padding: 0;
+  }
+  
+  .column ul li {
+    margin-bottom: 10px;
+  }
+
+  .mat-icon {
+    margin-right: 10px;
+  }
+  
+  .column ul li a {
+    color: #fff;
+    text-decoration: none;
+    transition: color 0.3s;
+  }
+  
+  .column ul li a:hover {
+    color: #1693A5;
+  }
+  
+  .column svg {
+    font-size: 2rem;
+    margin-right: 10px;
+    color: #1693A5;
+    cursor: pointer;
+    transition: 0.3s;
+  }
+  
+  .column svg:hover {
+    color: #0d545f;
+  }
+  
+  .input_valid {
+    display: flex;
+    flex-direction: column;
+  }
+  
+  .input_valid span {
+    color: #ff4b4b;
+    margin-top: -5px;
+    margin-bottom: 10px;
+    font-size: 0.8rem;
+  }
+  
+  .input {
+    padding: 10px;
+    width: 100%;
+    border: none;
+    margin: 10px 0;
+    border-radius: 3px;
+  }
+  
+  .button {
+    padding: 10px 20px;
+    background-color: #1693A5;
+    border: none;
+    color: #fff;
+    border-radius: 3px;
+    cursor: pointer;
+    transition: background-color 0.3s;
+  }
+  
+  .button:hover {
+    background-color: #0d545f;
+  }
+  
+  .bottomBar {
+    text-align: center;
+    padding-top: 20px;
+    border-top: 1px solid #444;
+    margin-top: 20px;
+  }
+  

@@ -1,0 +1,15 @@
+<div class="card-vaga">
+    <h2>{{ vaga.titulo }}</h2>
+    <p class="company">{{ vaga.empresa }}</p>
+    <p class="location"><strong>Local:</strong> {{ vaga.local }}</p>
+    <p><strong>Salário:</strong> R$ {{ vaga.salario }}</p>
+    
+    <div class="lista-requisitos">
+        <div class="requisito" *ngFor="let requisito of vaga.requisitos">
+            <p>{{ requisito }}</p>
+        </div>
+    </div>
+
+    <p class="description">{{ vaga.descricao }}</p>
+    <button>Enviar currículo</button>
+</div>

@@ -1,0 +1,103 @@
+.signup-container {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    padding-top: 70px;
+
+    & img {
+        height: 80vh;
+        border-top-left-radius: 8px;
+        border-bottom-left-radius: 8px;
+        box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+    }
+}
+
+.cadastro-container {
+    width: 40%;
+    height: 80vh;
+    padding: 20px;
+    background-color: var(--secondary); 
+    border-top-right-radius: 8px;
+    border-bottom-right-radius: 8px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+}
+
+h2 {
+    text-align: center;
+    font-size: 24px;
+    color: var(--text-color);
+    margin-bottom: 20px;
+}
+
+.form-group {
+    margin-bottom: 15px;
+}
+
+.form-group label {
+    display: block;
+    font-size: 14px;
+    color: var(--text-color);
+    margin-bottom: 5px;
+}
+
+.form-group input {
+    width: 100%;
+    padding: 10px;
+    font-size: 16px;
+    border: 1px solid #ccc;
+    border-radius: 4px;
+    box-sizing: border-box;
+    background-color: var(--secondary); 
+}
+
+.btn {
+    width: 100%;
+    padding: 12px;
+    background-color: var(--primary); 
+    color: white;
+    border: none;
+    border-radius: 4px;
+    font-size: 16px;
+    cursor: pointer;
+    transition: background-color 0.3s;
+}
+
+.btn:hover {
+    background-color: #1c242c;
+}
+
+.btn:disabled {
+    background-color: #ccc;
+    cursor: not-allowed;
+}
+
+.btn:hover:not(:disabled) {
+    background-color: var(--primary); 
+}
+
+
+.error-message {
+    color: var(--error);
+    font-size: 12px;
+    margin-top: 5px;
+  }
+  
+.success-message {
+    color: var(--success); 
+    font-size: 1rem;
+    margin-top: 10px;
+    text-align: center;
+    margin-bottom: 10px;
+}
+
+.login-router {
+    text-align: center;
+    width: 100%;
+    margin-top: 40px;
+    cursor: pointer;
+}
+
+.login-router span:hover {
+    transition: 0.3s;
+    color: var(--primary);
+}

@@ -1,111 +1,38 @@
-<!-- <p>Nome : {{candidato.nome}}</p> -->
-<!-- <p> Candidaturas : {{candidato?.candidaturas}}</p> -->
-
-<!-- <button (click)="buscarCandidato('1234')">Buscar Candidato</button> -->
-
-<!-- Cadastro -->
-<!-- 
- <h2>Cadastrar Candidato</h2>
-
-<form #candidatoForm="ngForm" (ngSubmit)="cadastrar()">
+<div class="signup-container">
+  <img src="/cadastroA.jpg" alt="">
+  <div class="cadastro-container">
+    <h2>Crie sua conta</h2>
+    <form (ngSubmit)="cadastrar()" #cadastroForm="ngForm">
+      <div class="form-group">
+        <label for="nome">Nome</label>
+        <input type="text" id="nome" name="nome" ngModel [(ngModel)]="candidato.nome" required>
+        <span *ngIf="cadastroForm.submitted && !cadastroForm.controls['nome']?.valid" class="error-message">Nome é obrigatório!</span>
+      </div>
+      <div class="form-group">
+        <label for="cpf">CPF</label>
+        <input type="text" id="cpf" name="cpf" ngModel [(ngModel)]="candidato.cpf" required>
+        <span *ngIf="cadastroForm.submitted && !cadastroForm.controls['cpf']?.valid" class="error-message">CPF é obrigatório!</span>
+      </div>
+      <div class="form-group">
+        <label for="email">E-mail</label>
+        <input type="email" id="email" name="email" ngModel [(ngModel)]="candidato.email" required email>
+        <span *ngIf="cadastroForm.submitted && !cadastroForm.controls['email']?.valid" class="error-message">E-mail é obrigatório!</span>
+        <span *ngIf="cadastroForm.controls['email']?.hasError('email') && cadastroForm.controls['email']?.touched" class="error-message">E-mail inválido!</span>
+      </div>
+      <div class="form-group">
+        <label for="senha">Senha</label>
+        <input type="password" id="senha" name="senha" ngModel [(ngModel)]="candidato.senha" required minlength="6">
+        <span *ngIf="cadastroForm.submitted && !cadastroForm.controls['senha']?.valid" class="error-message">Senha é obrigatória!</span>
+        <span *ngIf="cadastroForm.controls['senha']?.hasError('minlength') && cadastroForm.controls['senha']?.touched" class="error-message">Senha deve ter pelo menos 6 caracteres!</span>
+      </div>
+      
+      <span class="error-message">{{menssagem}}</span>
+      <button type="submit" class="btn" [disabled]="!cadastroForm.form.valid">Criar conta</button>
+    </form>
+    <div class="login-router"> 
+      <span [routerLink]="['/login-candidato']" >Já tem uma conta? Faça login!</span>
+    </div>
+  </div>
   
-  <label for="cpf">CPF:</label>
-  <input type="text" id="cpf" [(ngModel)]="candidato.cpf" name="cpf" required />
-
-  <label for="nome">Nome:</label>
-  <input type="text" id="nome" [(ngModel)]="candidato.nome" name="nome" required />
-
-  <label for="email">Email:</label>
-  <input type="email" id="email" [(ngModel)]="candidato.email" name="email" required />
-
-  <button type="submit" [disabled]="candidatoForm.invalid">Cadastrar</button>
-</form>  -->
- 
-<!-- <div *ngIf="candidatoCadastrado">
-  <h3>Candidato Cadastrado:</h3>
-  <p><strong>CPF:</strong> {{ candidatoCadastrado.cpf }}</p>
-  <p><strong>Nome:</strong> {{ candidatoCadastrado.nome }}</p>
-  <p><strong>Email:</strong> {{ candidatoCadastrado.email }}</p>
-</div> -->
-
-
-
-
-<!-- BUSCAR CANDIDATOS -->
-
-<!-- <h2>Buscar Candidato</h2>
-
-<form #buscarForm="ngForm" (ngSubmit)="buscarCandidato(candidato.cpf)">
-  <label for="cpf">CPF:</label>
-  <input type="text" id="cpf" [(ngModel)]="candidato.cpf" name="cpf" required />
-
-  <button type="submit" [disabled]="buscarForm.invalid">Buscar</button>
-</form>
-
-<div *ngIf="candidato">
-  <h3>Dados do Candidato:</h3>
-  <p><strong>CPF:</strong> {{ candidato.cpf }}</p>
-  <p><strong>Nome:</strong> {{ candidato.nome }}</p>
-  <p><strong>Email:</strong> {{ candidato.email }}</p>
-</div> -->
-
-<!-- DELETAR CANDIDATO -->
-
-<!-- <h2>Deletar Candidato</h2>
-
-<form #deletarForm="ngForm" (ngSubmit)="deletarCandidato(candidato.cpf)">
-  <label for="cpf">CPF:</label>
-  <input type="text" id="cpf" [(ngModel)]="candidato.cpf" name="cpf" required />
-
-  <button type="submit" [disabled]="deletarForm.invalid">Deletar</button>
-</form> -->
-<!-- <h2>Candidatar</h2>
-<form #candidaturaForm="ngForm" (ngSubmit)="candidatar(vagaInput.value)">
-  <label for="cpf">CPF do Candidato:</label>
-  <input id="cpf" #cpfInput type="text" name="cpf" required />
-
-  <label for="vaga">ID da Vaga:</label>
-  <input id="vaga" #vagaInput type="number" name="vaga" required />
-
-  <button type="submit">Candidatar</button>
-</form> -->
-
-<!-- <div *ngIf="mensagem" class="mensagem">
-  {{ mensagem }}
-</div> -->
-
-<!-- <h2>Remover candidatura</h2>
-<form #candidaturaForm="ngForm" (ngSubmit)="removerCandidatura(vagaInput.value)">
-  <label for="cpf">CPF do Candidato:</label>
-  <input id="cpf" #cpfInput type="text" name="cpf" required />
-
-  <label for="vaga">ID da Vaga:</label>
-  <input id="vaga" #vagaInput type="number" name="vaga" required />
-
-  <button type="submit">Remover Candidatura</button>
-</form> -->
-
-<!-- <button (click)="verificarCPF('1234423423')">verifica</button> -->
-
-<!-- Login -->
-<!-- 
-<h2>Login</h2>
-<form (submit)="login(candidato.cpf, candidato.senha)">
-    <label for="cpf">CPF:</label>
-    <input type="text" id="cpf" [(ngModel)]="candidato.cpf" name="cpf" required>
-    <br>
-    <label for="senha">Senha:</label>
-    <input type="password" id="senha" [(ngModel)]="candidato.senha" name="senha" required>
-    <br>
-    <button type="submit">Logar</button>
-</form> -->
-
-<!-- LISTAR CANDIDATURAS -->
-
-<!-- <button (click)="listarCandidaturas(candidato.candidaturas)">Listar candidaturas</button>
-
-<ul>
-    <li *ngFor="let candidatura of candidaturas">
-        {{candidatura.id}} - {{candidatura.titulo}} - {{candidatura.salario}}
-    </li>
-</ul>  -->
+  
+</div>
