@@ -98,41 +98,25 @@
     },
     {
       "id": "7",
-      "titulo": "Desenvolvedor java",
-      "descricao": "Busco desenvolvedor java com habilidades em spring ",
-      "salario": 12000,
-      "empresa": "Securitas",
-      "local": "Remoto",
+      "titulo": "Vaga de teste",
+      "descricao": "Estou criando uma vaga de teste",
+      "salario": 10000,
+      "empresa": "Empresa ficticia",
+      "local": "Local Fictício",
       "requisitos": [
-        "java",
-        "spring",
-        "sql"
+        "R1",
+        "R2",
+        "R3"
       ],
       "candidatos": []
     }
   ],
   "candidatos": [
     {
-      "cpf": "1234",
-      "nome": "luiz",
-      "email": "email@email",
-      "senha": "123",
-      "candidaturas": [],
-      "id": "f45d"
-    },
-    {
       "id": "f45d",
       "cpf": "12345678910",
       "nome": "luizinho",
       "email": "email@email",
-      "senha": "",
-      "candidaturas": []
-    },
-    {
-      "id": "b7aa",
-      "cpf": "1234",
-      "nome": "luizteste",
-      "email": "teste@teste",
       "senha": "",
       "habilidades": [],
       "candidaturas": []
@@ -152,24 +136,6 @@
       "nome": "lucas",
       "email": "lucaskaique742@gmail.com",
       "senha": "122312312312",
-      "habilidades": [],
-      "candidaturas": []
-    },
-    {
-      "id": "7f0e",
-      "cpf": "1243",
-      "nome": "Lucas Kaique",
-      "email": "lucaskaique742@gmail.com",
-      "senha": "1235686",
-      "habilidades": [],
-      "candidaturas": []
-    },
-    {
-      "id": "1fc5",
-      "cpf": "12345",
-      "nome": "Kaique",
-      "email": "lucaskaique742@gmail.com",
-      "senha": "12354564",
       "habilidades": [],
       "candidaturas": []
     }

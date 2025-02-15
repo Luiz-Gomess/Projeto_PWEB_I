@@ -32,7 +32,7 @@ export class LoginCandidatoComponent implements OnInit {
 
   onSubmit(): void {
     console.log(this.candidato.cpf)
-    this.candidatoService.buscarCandidato(this.candidato.cpf).subscribe({
+    this.candidatoService.logar(this.candidato.cpf, this.candidato.senha).subscribe({
       next: (candidato) => {
         console.log(candidato)
         if (candidato) {
