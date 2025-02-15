@@ -95,6 +95,20 @@
         "TailwindCss"
       ],
       "candidatos": []
+    },
+    {
+      "id": "7",
+      "titulo": "Desenvolvedor java",
+      "descricao": "Busco desenvolvedor java com habilidades em spring ",
+      "salario": 12000,
+      "empresa": "Securitas",
+      "local": "Remoto",
+      "requisitos": [
+        "java",
+        "spring",
+        "sql"
+      ],
+      "candidatos": []
     }
   ],
   "candidatos": [
@@ -138,6 +152,24 @@
       "nome": "lucas",
       "email": "lucaskaique742@gmail.com",
       "senha": "122312312312",
+      "habilidades": [],
+      "candidaturas": []
+    },
+    {
+      "id": "7f0e",
+      "cpf": "1243",
+      "nome": "Lucas Kaique",
+      "email": "lucaskaique742@gmail.com",
+      "senha": "1235686",
+      "habilidades": [],
+      "candidaturas": []
+    },
+    {
+      "id": "1fc5",
+      "cpf": "12345",
+      "nome": "Kaique",
+      "email": "lucaskaique742@gmail.com",
+      "senha": "12354564",
       "habilidades": [],
       "candidaturas": []
     }
