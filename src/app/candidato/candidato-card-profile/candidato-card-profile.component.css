@@ -1,0 +1,63 @@
+
+.profile {
+    width: 100%;
+    display: flex;
+    justify-content: center;
+}
+
+.profile-data {
+    width: 70%;
+    background-color: var(--background);
+    border-radius: 8px;
+    padding-bottom: 20px;
+  } 
+
+  .profile-capa {
+    width: 100%;
+    height: 200px;
+    object-fit: cover;
+    border-radius: 8px 8px 0 0;
+  }
+
+  .profile-img {
+    width: 17%;
+    border-radius: 100%;
+    position: relative;
+    left: 40px;
+    top: -50px;
+    border: 4px solid var(--primary);
+  }
+
+  .profile-name {
+    margin: -40px 0 20px 40px;
+    font-weight: bold;
+  }
+
+  .profile-data p {
+    font-size: 1rem;
+    margin-left: 40px;
+  }
+
+  .profile-header {
+    color: var(--primary);
+    margin: 20px 0 10px 40px;
+  }
+
+  .profile-skills {
+    display: flex;
+    gap: 10px;
+    margin-left: 40px;
+    flex-wrap: wrap;
+  }
+
+  .skills {
+    background-color: var(--type-complement);
+    padding: 5px 20px;
+    border-radius: 20px;
+    
+  }
+
+  .skills p {
+    margin: 0;
+  }
+

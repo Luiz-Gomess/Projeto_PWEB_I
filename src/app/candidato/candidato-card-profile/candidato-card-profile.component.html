@@ -1,0 +1,24 @@
+<div class="profile">
+    <div class="profile-data">
+      <img src="/capa.jpg" class="profile-capa" alt="">
+      <img src="/profile.jpg" class="profile-img" alt="">
+      <h2 class="profile-name">{{ candidato.nome }}</h2>
+
+      <h3 class="profile-header">Sobre </h3>
+      <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Minus itaque exercitationem blanditiis sapiente eos laudantium accusantium! Corporis quod exercitationem repellendus dignissimos neque eaque, quae, saepe, numquam laborum recusandae sint qui? Lorem ipsum dolor sit, amet consectetur adipisicing elit. Nobis magnam porro dolorem rerum tenetur temporibus earum dolor ratione repellendus sunt quibusdam, architecto eligendi mollitia maiores similique saepe, totam ullam esse.</p>
+
+      <h3 class="profile-header">Competências</h3>
+      <div class="profile-skills">
+          <div class="skills" *ngFor="let hab of hab">
+              <p>{{ hab }}</p>
+          </div>
+      </div>
+
+      <h3 class="profile-header">Dados pessoais</h3>
+      <p><strong>CPF: </strong> {{candidato.cpf}}</p>
+
+      <h3 class="profile-header">Contatos</h3>
+      <p><strong>Email: </strong> {{candidato.email}}</p>
+
+    </div>
+</div>
