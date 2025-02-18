@@ -20,7 +20,7 @@ export class HomeComponent implements OnInit {
   constructor(private vagaService: VagaService, private router: Router) {}
 
   slideConfig = {
-    slidesToShow: 1,
+    slidesToShow: 2,
     slidesToScroll: 1,
     infinite: true,
     dots: true,

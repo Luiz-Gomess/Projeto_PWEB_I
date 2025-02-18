@@ -1,14 +1,26 @@
 .search-section {
     height: 70vh;
     background-color: var(--primary);
+    background: linear-gradient(rgba(0, 0, 0, 0.7), rgba(0, 0, 0, 0.7)), url("/home.jpg") no-repeat;
+    background-size: cover;
+    background-position: center;
+    
+    
     padding-left: 60px;
-    padding-top: 70px;
     color: var(--secondary);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    position: relative;
+
+    & div {
+      width: 100%;
+      text-align: center;
+    }
 
     & h2 {
-        font-size: 3em;
-        width: 40%;
-        margin-bottom: 50px;
+        font-size: 3.2em;
+        margin-bottom: 70px;
     }
 
     & label {
@@ -16,6 +28,7 @@
     }
 
     & .search-area {
+        width: 100%;
         margin-top: 10px;
     }
 
@@ -30,18 +43,25 @@
     #search-input::placeholder {
         color: var(--text-color);
     }
+
+    /* & img {
+      border-radius: 8px;
+      width: 35%;
+      position: absolute;
+      right: 100px;
+    } */
 }
 
 .subtitle {
     width: 40%;
     font-size: 2em;
-    margin: 24px 0 30px 70px;
+    margin: 24px 0 50px 10%;
     color: var(--primary);
 }
 
 .btn {
-    background-color: var(--secondary);
-    color: var(--text-color);
+    background-color: var(--primary);
+    color: var(--secondary);
 }
 
 .last-update {
@@ -53,7 +73,7 @@
     display: flex;
     justify-content: center;
     align-items: center;
-    width: 60%;
+    width: 65%;
     margin: 0 auto;
   }
   
@@ -103,26 +123,28 @@
 
   .partners-section {
     display: flex;
-    flex-direction: column;
+    width: 80%;
+    margin: auto;
     margin-bottom: 30px;
+
   }
 
   .partners-text {
     display: flex;
-    justify-content: space-between;
-  
-    width: 100%;
-    padding: 0 70px;
+    flex-direction: column;
+    gap: 30px;
 
     & p {
         width: 80%;
-        margin-bottom: 40px;
     }
+  }
+
+  .partners-text h3 {
+    font-size: 1.4rem;
   }
 
   .partners {
     width: 50%;
-    margin-top: -20px;
   } 
 
 

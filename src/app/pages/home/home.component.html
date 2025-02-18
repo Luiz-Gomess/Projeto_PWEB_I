@@ -1,15 +1,18 @@
 <app-navbar />
 <main>
     <section class="search-section">
-        <h2>Conectando Talentos ao Futuro Profissional.</h2>
+        <div>
+            <h2>Conectando Talentos ao Futuro Profissional.</h2>
 
 
-        <label for="search-input">Busque Sua Próxima Oportunidade – Explore Vagas <br />que Combinam com Seu Talento!</label>
-        <div class="search-area">
-            <input type="text" id="search-input" placeholder="Encontrar vagas">
-            <button class="btn" (click)="navigateToListagemVagas()">Buscar</button>
+            <label for="search-input">Busque Sua Próxima Oportunidade – Explore Vagas <br />que Combinam com Seu
+                Talento!</label>
+            <div class="search-area">
+                <input type="text" id="search-input" placeholder="Encontrar vagas">
+                <button class="btn" (click)="navigateToListagemVagas()">Buscar</button>
+            </div>
         </div>
-        
+
     </section>
 
     <!-- <section class="about">
@@ -24,7 +27,7 @@
 
             </div>
             
-            <img src="/home.jpg" alt="">
+            <img src="/homeS.png" alt="">
         </div>
         
     </section> -->
@@ -41,26 +44,28 @@
         </div>
     </section>
 
+    <h2 class="subtitle">Está contratando ?</h2>
     <section class="partners-section">
-        <h2 class="subtitle">Está contratando ?</h2>
 
         <div class="partners-text">
-            <div>
-                <p>
-                    <strong>Seja um parceiro da <span class="highlight">contratAe</span></strong> e tenha acesso a uma ampla rede de talentos qualificados, preparados para impulsionar o crescimento e a inovação do seu negócio. 
-                    Ao se juntar a nós, você contará com profissionais capacitados e alinhados às necessidades do mercado, prontos para agregar valor à sua empresa.
-                </p>
-            
-                <p>
-                    <strong>Venha fazer parte dessa transformação!</strong> Conheça nossas empresas parceiras e descubra como a <span class="highlight">contratAe</span> pode ajudar sua empresa a encontrar os melhores talentos. 
-                    Juntos, podemos construir um futuro mais <strong>justo, acessível e inovador</strong> para o mercado de trabalho!
-                </p>
-                 <button class="btn-new-vaga" (click)="navigateToNewVaga()">Anunciar vaga</button>
-            </div>
-            <img src="/logos.png" class="partners" alt="Empresas parceiras da contratAe">
+            <h3>Encontre os Melhores Talentos para Sua Empresa</h3>
+            <p>
+                <strong>Seja um parceiro da <span class="highlight">contratAe</span></strong> e tenha acesso a uma ampla
+                rede de talentos qualificados, preparados para impulsionar o crescimento e a inovação do seu negócio.
+                Ao se juntar a nós, você contará com profissionais capacitados e alinhados às necessidades do mercado,
+                prontos para agregar valor à sua empresa.
+            </p>
+
+            <p>
+                <strong>Venha fazer parte dessa transformação!</strong> Conheça nossas empresas parceiras e descubra
+                como a <span class="highlight">contratAe</span> pode ajudar sua empresa a encontrar os melhores
+                talentos.
+                Juntos, podemos construir um futuro mais <strong>justo, acessível e inovador</strong> para o mercado de
+                trabalho!
+            </p>
+            <button class="btn-new-vaga" (click)="navigateToNewVaga()">Anunciar vaga</button>
         </div>
-        
+        <img src="/logos.png" class="partners" alt="Empresas parceiras da contratAe">
     </section>
-    
 </main>
 <app-footer />
