@@ -35,6 +35,10 @@ export class CandidatoService {
   }
 
   logar(cpf: string, senha: string): Observable<Candidato> {
+    if (!cpf.trim()) {
+      return throwError(() => new Error('CPF não pode estar vazio'));
+    }
+    console.log(cpf, senha)
     return this.buscarCandidato(cpf).pipe(
       catchError((error) => throwError(() => new Error(error.message))), // Propaga erro corretamente
       switchMap((candidato) => {
@@ -46,6 +50,7 @@ export class CandidatoService {
       })
     );
   }
+
   cadastrar(candidato: Candidato): Observable<Candidato> {
     return this.listarCandidatos().pipe(
       switchMap((candidatos: Candidato[]) => {
@@ -58,6 +63,7 @@ export class CandidatoService {
       })
     );
   }
+
   deletarPerfil(cpf: string): Observable<any> {
     return this.buscarCandidato(cpf).pipe(
       switchMap((candidato) => {
@@ -126,5 +132,4 @@ export class CandidatoService {
       )
     );
   }
-
 }

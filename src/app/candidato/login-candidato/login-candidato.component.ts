@@ -40,7 +40,7 @@ export class LoginCandidatoComponent implements OnInit {
           this.messageType = 'success';
           this.candidatoStateService.setCandidato(candidato);
           setTimeout(() => {
-            this.router.navigate(['/candidato-dashboard']); // Redireciona para a página do candidato
+            this.router.navigate(['/candidato-dashboard']);
           }, 2000);
         } else {
           this.message = 'CPF ou senha incorretos.';
@@ -48,7 +48,7 @@ export class LoginCandidatoComponent implements OnInit {
         }
       },
       error: (err) => {
-        this.message = 'Erro ao tentar fazer login. Tente novamente.';
+        this.message = err;
         this.messageType = 'error';
       }
     });

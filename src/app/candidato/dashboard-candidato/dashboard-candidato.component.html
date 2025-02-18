@@ -1,7 +1,39 @@
 <app-navbar />
+
 <div class="dashboard-container">
-    <h1>Área do Candidato</h1>
-    <h2>Bem vindo {{candidato.nome}}</h2>
-    <button (click)="navigateToListagemVagas()">Ver vagas disponíveis</button>
+
+  <!-- Sidebar -->
+  <div class="sidebar" [class.collapsed]="!sidebarOpen">
+    <div class="toggle-area" (click)="toggleSidebar()">
+        <mat-icon class="toggle-icon">
+            {{ sidebarOpen ? 'chevron_left' : 'chevron_right' }}
+        </mat-icon>
+    </div>
+    
+
+    <ul *ngIf="sidebarOpen">
+      <li *ngFor="let link of sidebarLinks" 
+          [class.active]="isActive(link.section)"
+          (click)="setActiveSection(link.section)">
+        <mat-icon>{{ link.icon }}</mat-icon> {{ link.label }}
+      </li>
+    </ul>
+  </div>
+
+  <!-- Conteúdo -->
+  <div class="content">
+    <app-candidato-card-profile [candidato]="candidato" *ngIf="isActive('perfil')"></app-candidato-card-profile>
+
+    <div class="candidaturas" *ngIf="isActive('candidaturas')">
+      <h1>Minhas Candidaturas</h1>
+    </div>
+
+    <div class="vagas" *ngIf="isActive('vagas')">
+      <h1>Vagas</h1>
+      <button (click)="navigateToListagemVagas()">Ver vagas disponíveis</button>
+    </div>
+  </div>
+
 </div>
+
 <app-footer />
