@@ -81,37 +81,93 @@
     {
       "id": "6",
       "titulo": "Desenvolvedor Front End Jr",
-      "descricao": "Estamos em busca de um Desenvolvedor Front-End Júnior para integrar nosso time de tecnologia. O profissional será responsável por desenvolver e manter interfaces web responsivas e interativas, garantindo uma experiência de usuário fluida e intuitiva. Trabalhará em conjunto com designers e desenvolvedores back-end para transformar designs em código funcional, otimizar desempenho e assegurar compatibilidade entre diferentes navegadores e dispositivos.",
+      "descricao": "Estamos em busca de um Desenvolvedor Front-End Júnior para integrar nosso time de tecnologia. O profissional será responsável por desenvolver e manter interfaces web responsivas e interativas, garantindo uma experiência de usuário fluida e intuitiva.",
       "salario": 3500,
       "empresa": "Securitas Tech",
       "local": "Remoto",
       "requisitos": [
         "JavaScript",
         "Angular",
-        "Css",
-        "Html",
-        "typeScript",
-        "Node js",
-        "TailwindCss"
+        "CSS",
+        "HTML",
+        "TypeScript",
+        "Node.js",
+        "TailwindCSS"
       ],
       "candidatos": []
     },
     {
       "id": "7",
-      "titulo": "Vaga de teste",
-      "descricao": "Estou criando uma vaga de teste",
-      "salario": 10000,
-      "empresa": "Empresa ficticia",
-      "local": "Local Fictício",
+      "titulo": "Analista de Marketing Digital",
+      "descricao": "Buscamos um Analista de Marketing Digital para planejar e executar campanhas publicitárias online. O profissional será responsável por otimizar anúncios e gerenciar estratégias de SEO e redes sociais.",
+      "salario": 4500,
+      "empresa": "Marketing Plus",
+      "local": "São Paulo, SP",
       "requisitos": [
-        "R1",
-        "R2",
-        "R3"
+        "Google Ads",
+        "Facebook Ads",
+        "SEO",
+        "Analytics",
+        "Copywriting"
+      ],
+      "candidatos": []
+    },
+    {
+      "id": "8",
+      "titulo": "Analista de Recursos Humanos",
+      "descricao": "O profissional será responsável por recrutamento, seleção e desenvolvimento de colaboradores. Irá estruturar processos de avaliação de desempenho e promover ações de engajamento.",
+      "salario": 5000,
+      "empresa": "HR Solutions",
+      "local": "Florianópolis, SC",
+      "requisitos": [
+        "Recrutamento",
+        "Seleção",
+        "Treinamento",
+        "Legislação Trabalhista"
+      ],
+      "candidatos": []
+    },
+    {
+      "id": "9",
+      "titulo": "Técnico de Suporte de TI",
+      "descricao": "Buscamos um Técnico de Suporte para atender chamados, solucionar problemas técnicos e garantir o bom funcionamento de sistemas e redes.",
+      "salario": 3200,
+      "empresa": "Tech Support",
+      "local": "Porto Alegre, RS",
+      "requisitos": [
+        "Windows",
+        "Linux",
+        "Redes",
+        "Manutenção de Hardware"
+      ],
+      "candidatos": []
+    },
+    {
+      "id": "10",
+      "titulo": "Analista Financeiro",
+      "descricao": "O Analista Financeiro será responsável pelo controle de fluxo de caixa, planejamento financeiro e análise de investimentos para otimizar os recursos da empresa.",
+      "salario": 6000,
+      "empresa": "FinanceCorp",
+      "local": "Brasília, DF",
+      "requisitos": [
+        "Excel Avançado",
+        "ERP",
+        "Planejamento Financeiro",
+        "Contabilidade"
       ],
       "candidatos": []
     }
   ],
   "candidatos": [
+    {
+      "id": "f45d",
+      "cpf": "000001212",
+      "nome": "Teste",
+      "email": "email@email",
+      "senha": "",
+      "habilidades": [],
+      "candidaturas": []
+    },
     {
       "id": "f45d",
       "cpf": "12345678910",
@@ -136,6 +192,15 @@
       "nome": "lucas",
       "email": "lucaskaique742@gmail.com",
       "senha": "122312312312",
+      "habilidades": [],
+      "candidaturas": []
+    },
+    {
+      "id": "653a",
+      "cpf": "082",
+      "nome": "Lucas Kaique ",
+      "email": "lucaskaique742@gmail.com",
+      "senha": "123456",
       "habilidades": [],
       "candidaturas": []
     }
