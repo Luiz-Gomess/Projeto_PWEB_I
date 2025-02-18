@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, Input, OnInit } from '@angular/core';
 import { VagaService } from '../../services/vaga.service';
 import { Vaga } from '../../models/vaga';
 import { CommonModule } from '@angular/common';
