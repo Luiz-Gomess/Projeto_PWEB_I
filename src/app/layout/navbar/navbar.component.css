@@ -20,7 +20,7 @@
     list-style: none;
     gap: 20px;
     
-    & li {
+    & li button {
         width: 100px;
         text-align: center;
         padding: 10px 0;
@@ -41,8 +41,9 @@
         transition: 0.3s;
     }
 
-    & li:nth-child(2) {
-        background-color: var(--background);
-        color: var(--text-color);
-    }
+}
+
+.signup-button {
+    background-color: var(--background);
+    color: var(--text-color);
 }

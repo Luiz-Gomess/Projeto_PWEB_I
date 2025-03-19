@@ -5,7 +5,7 @@ import { HomeComponent } from './pages/home/home.component';
 import { CandidatoDashboardComponent} from './candidato/dashboard-candidato/dashboard-candidato.component';
 import { ListagemCandidatoComponent } from './candidato/listagem-candidato/listagem-candidato.component';
 import { CadastrarVagaComponent } from './vaga/cadastrar-vaga/cadastrar-vaga.component';
-import { LoginCandidatoComponent } from './candidato/login-candidato/login-candidato.component';
+import { LoginPageComponent } from './pages/login-page/login-page.component';
 
 export const routes: Routes = [
     { 
@@ -37,7 +37,7 @@ export const routes: Routes = [
         component: CadastrarVagaComponent
     },
     {
-        path: "login-candidato",
-        component: LoginCandidatoComponent
+        path: "login",
+        component: LoginPageComponent
     }
 ];

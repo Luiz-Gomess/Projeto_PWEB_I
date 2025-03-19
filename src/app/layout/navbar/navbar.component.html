@@ -3,8 +3,16 @@
     (click)="navigateToHome()"/>
 
     <ul class="navbar-links" *ngIf="!isAuthenticated">
-        <li [routerLink]="['/login-candidato']">Entrar</li>
-        <li [routerLink]="['/cadastro-candidato']">Criar conta</li>
+        <li > 
+            <button mat-button [matMenuTriggerFor]="menu">Entrar</button>
+            <mat-menu #menu="matMenu">
+                <button mat-menu-item (click)="setUserAndGoToLogin('c')">Candidato</button>
+                <button mat-menu-item (click)="setUserAndGoToLogin('r')">Recrutador</button>
+            </mat-menu>
+        </li>
+        <li>
+            <button class="signup-button" [routerLink]="['/cadastro-candidato']">Criar conta</button>
+        </li>
     </ul>
 
     <div *ngIf="isAuthenticated">

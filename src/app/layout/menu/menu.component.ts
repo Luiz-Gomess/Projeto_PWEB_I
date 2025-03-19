@@ -3,7 +3,7 @@ import { MatMenuModule } from '@angular/material/menu';
 import { MatButtonModule } from '@angular/material/button';
 import { MatIconModule } from '@angular/material/icon';
 import { Router } from '@angular/router';
-import { CandidatoStateService } from '../../shared/services/candidato-state.service';
+import { UserStateService } from '../../shared/services/user-state.service';
 import { CandidatoService } from '../../shared/services/candidato.service';
 import { Candidato } from '../../shared/models/candidato';
 
@@ -17,7 +17,7 @@ import { Candidato } from '../../shared/models/candidato';
 export class MenuComponent {
   candidato: Candidato = new Candidato('', '','', '');
 
-  constructor(private router: Router, private candidatoStateService: CandidatoStateService, private candidatoService: CandidatoService) {}
+  constructor(private router: Router, private userStateService: UserStateService, private candidatoService: CandidatoService) {}
 
   deletarCandidato(cpf: string): void {
     this.candidatoService.deletarPerfil(cpf).subscribe({
@@ -32,7 +32,7 @@ export class MenuComponent {
 
   selecionarItem(item: string): void {
     if(item === 'Sair') {
-      this.candidatoStateService.limparCandidato();
+      this.userStateService.limparUser();
       this.router.navigate(['/'])
     } else if (item === "Excluir") {
       this.deletarCandidato(this.candidato.cpf)
@@ -43,6 +43,6 @@ export class MenuComponent {
   }
 
   ngOnInit() {
-    this.candidato = this.candidatoStateService.getCandidato() as Candidato;
+    this.candidato = this.userStateService.getCandidato() as Candidato;
   }
 }

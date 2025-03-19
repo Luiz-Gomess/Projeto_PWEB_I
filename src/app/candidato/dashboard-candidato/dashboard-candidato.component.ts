@@ -1,5 +1,5 @@
 import { Component, OnInit, ViewEncapsulation } from '@angular/core';
-import { CandidatoStateService } from '../../shared/services/candidato-state.service';
+import { UserStateService } from '../../shared/services/user-state.service';
 import { Candidato } from '../../shared/models/candidato';
 import { Router } from '@angular/router';
 import { NavbarComponent } from '../../layout/navbar/navbar.component';
@@ -8,11 +8,14 @@ import { MatIcon } from '@angular/material/icon';
 import { CommonModule } from '@angular/common';
 import { CandidatoCardProfileComponent } from '../candidato-card-profile/candidato-card-profile.component';
 import { Notificacao, NotificacaoFirestoreService } from '../../shared/services/notificationFirestore.service';
+import { Vaga } from '../../shared/models/vaga';
+import { CandidatoService } from '../../shared/services/candidato.service';
+import { CardVagaComponent } from '../../vaga/card-vaga/card-vaga.component';
 
 @Component({
   selector: 'app-candidato-dashboard',
   templateUrl: './dashboard-candidato.component.html',
-  imports: [NavbarComponent, FooterComponent, MatIcon, CandidatoCardProfileComponent, CommonModule],
+  imports: [NavbarComponent, FooterComponent, MatIcon, CandidatoCardProfileComponent, CommonModule, CardVagaComponent],
   styleUrl: './dashboard-candidato.component.css',
   encapsulation: ViewEncapsulation.None,
 })
@@ -24,6 +27,8 @@ export class CandidatoDashboardComponent implements OnInit {
     '',
     ''
   );
+
+  candidaturas: Vaga[] | null = null;
 
   activeSection: string = 'perfil';
   sidebarOpen: boolean = true; 
@@ -41,7 +46,7 @@ export class CandidatoDashboardComponent implements OnInit {
     { label: 'Vagas', icon: 'search', section: 'vagas' }
   ];
 
-  constructor(private candidatoStateService: CandidatoStateService, private router: Router, private notificacaoService: NotificacaoFirestoreService) {}
+  constructor(private userStateService: UserStateService, private router: Router, private notificacaoService: NotificacaoFirestoreService, private candidatoService: CandidatoService) {}
 
   navigateToListagemVagas() {
     this.router.navigate(['/listagem-vagas'])
@@ -52,6 +57,15 @@ export class CandidatoDashboardComponent implements OnInit {
   }
 
   setActiveSection(section: string) {
+    if(section === 'candidaturas') {
+
+      this.candidatoService.listarCandidaturas(this.candidato.cpf).subscribe((candidaturas: Vaga[]) => {
+        this.candidaturas = candidaturas;
+      });
+
+      console.log(this.candidaturas);
+    }
+
     this.activeSection = section;
   }
 
@@ -74,10 +88,10 @@ export class CandidatoDashboardComponent implements OnInit {
   }
   
   ngOnInit() {
-    if(!this.candidatoStateService.getCandidato()) {
+    if(!this.userStateService.getCandidato()) {
       this.router.navigate(['/login-candidato'])
     }
-    this.candidato = this.candidatoStateService.getCandidato() as Candidato;
+    this.candidato = this.userStateService.getCandidato() as Candidato;
   }
 
 }

@@ -26,6 +26,11 @@
 
     <div class="candidaturas" *ngIf="isActive('candidaturas')">
       <h1>Minhas Candidaturas</h1>
+      <div class="listagem-vagas-container">
+        <div class="list-vagas" *ngFor="let candidatura of candidaturas">
+            <app-card-vaga [vaga]="candidatura"></app-card-vaga>
+        </div>
+      </div>
     </div>
 
     <div class="vagas" *ngIf="isActive('vagas')">

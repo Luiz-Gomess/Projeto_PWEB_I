@@ -2,7 +2,7 @@ import { Component } from '@angular/core';
 import { Vaga } from '../../shared/models/vaga';
 import { Input } from '@angular/core';
 import { CommonModule } from '@angular/common';
-import { CandidatoStateService } from '../../shared/services/candidato-state.service';
+import { UserStateService } from '../../shared/services/user-state.service';
 import { Candidato } from '../../shared/models/candidato';
 import { CandidatoService } from '../../shared/services/candidato.service';
 
@@ -16,18 +16,35 @@ export class CardVagaComponent {
   @Input() vaga!: Vaga;
   candidato?: Candidato;
 
-  constructor(private candidatoStateService: CandidatoStateService, private candidatoService: CandidatoService){}
+  constructor(private userStateService: UserStateService, private candidatoService: CandidatoService){}
 
   ngOnInit() {
-    this.candidato = this.candidatoStateService.getCandidato() as Candidato;
+    this.candidato = this.userStateService.getCandidato() as Candidato;
   }
 
   candidatar() {
-    console.log(this.candidato)
     if(this.candidato?.cpf) {
+      this.candidatoService.candidatar(this.vaga.id, this.candidato?.cpf).subscribe({
+        next: () => {
+          console.log('Candidatura realizada com sucesso!');
+        },
+        error: (err) => {
+          console.error('Erro ao candidatar:', err);
+        }
+      });
+    }
+  }
 
-      this.candidatoService.candidatar(this.vaga.id, this.candidato?.cpf)
-      console.log('aobaa')
+  deletarCandidatura() {
+    if(this.candidato?.cpf) {
+      this.candidatoService.removerCandidatura(this.vaga.id, this.candidato?.cpf).subscribe({
+        next: () => {
+          console.log('Candidatura deletada com sucesso!');
+        },
+        error: (err) => {
+          console.error('Erro ao deletar candidatura:', err);
+        }
+      });
     }
   }
 }

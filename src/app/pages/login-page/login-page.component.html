@@ -4,12 +4,12 @@
         <h2>Entre com sua conta</h2>
         <div>
           <label for="cpf">CPF:</label>
-          <input type="text" id="cpf" [(ngModel)]="candidato.cpf" name="cpf" required>
+          <input type="text" id="cpf" [(ngModel)]="user.cpf" name="cpf" required>
         </div>
       
         <div>
           <label for="senha">Senha:</label>
-          <input type="password" id="senha" [(ngModel)]="candidato.senha" name="senha" required>
+          <input type="password" id="senha" [(ngModel)]="user.senha" name="senha" required>
         </div>
 
         <div *ngIf="message" class="message" [ngClass]="{'success': messageType === 'success', 'error': messageType === 'error'}">
