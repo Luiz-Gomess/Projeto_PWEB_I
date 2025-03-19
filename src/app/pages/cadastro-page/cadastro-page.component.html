@@ -1,0 +1,37 @@
+<div class="signup-container">
+    <img src="/cadastroA.jpg" alt="">
+    <div class="cadastro-container">
+      <h2>Crie sua conta</h2>
+      <form (ngSubmit)="cadastrar()" #cadastroForm="ngForm">
+        <div class="form-group">
+          <label for="nome">Nome</label>
+          <input type="text" id="nome" name="nome" ngModel [(ngModel)]="user.nome" required>
+          <span *ngIf="cadastroForm.submitted && !cadastroForm.controls['nome']?.valid" class="error-message">Nome é obrigatório!</span>
+        </div>
+        <div class="form-group">
+          <label for="cpf">CPF</label>
+          <input type="text" id="cpf" name="cpf" ngModel [(ngModel)]="user.cpf" required>
+          <span *ngIf="cadastroForm.submitted && !cadastroForm.controls['cpf']?.valid" class="error-message">CPF é obrigatório!</span>
+        </div>
+        <div class="form-group">
+          <label for="email">E-mail</label>
+          <input type="email" id="email" name="email" ngModel [(ngModel)]="user.email" required email>
+          <span *ngIf="cadastroForm.submitted && !cadastroForm.controls['email']?.valid" class="error-message">E-mail é obrigatório!</span>
+          <span *ngIf="cadastroForm.controls['email']?.hasError('email') && cadastroForm.controls['email']?.touched" class="error-message">E-mail inválido!</span>
+        </div>
+        <div class="form-group">
+          <label for="senha">Senha</label>
+          <input type="password" id="senha" name="senha" ngModel [(ngModel)]="user.senha" required minlength="6">
+          <span *ngIf="cadastroForm.submitted && !cadastroForm.controls['senha']?.valid" class="error-message">Senha é obrigatória!</span>
+          <span *ngIf="cadastroForm.controls['senha']?.hasError('minlength') && cadastroForm.controls['senha']?.touched" class="error-message">Senha deve ter pelo menos 6 caracteres!</span>
+        </div>
+        
+        <span class="error-message">{{menssagem}}</span>
+        <button type="submit" class="btn" [disabled]="!cadastroForm.form.valid">Criar conta</button>
+      </form>
+      <div class="login-router"> 
+        <span [routerLink]="['/login']" >Já tem uma conta? Faça login!</span>
+      </div>
+    </div>
+  </div>
+  

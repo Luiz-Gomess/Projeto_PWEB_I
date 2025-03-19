@@ -11,7 +11,11 @@
             </mat-menu>
         </li>
         <li>
-            <button class="signup-button" [routerLink]="['/cadastro-candidato']">Criar conta</button>
+            <button class="signup-button" [matMenuTriggerFor]="menu">Criar conta</button>
+            <mat-menu #menu="matMenu">
+                <button mat-menu-item (click)="setUserAndGoToCadastro('c')">Candidato</button>
+                <button mat-menu-item (click)="setUserAndGoToCadastro('r')">Recrutador</button>
+            </mat-menu>
         </li>
     </ul>
 

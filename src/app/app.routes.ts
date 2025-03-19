@@ -6,6 +6,7 @@ import { CandidatoDashboardComponent} from './candidato/dashboard-candidato/dash
 import { ListagemCandidatoComponent } from './candidato/listagem-candidato/listagem-candidato.component';
 import { CadastrarVagaComponent } from './vaga/cadastrar-vaga/cadastrar-vaga.component';
 import { LoginPageComponent } from './pages/login-page/login-page.component';
+import { CadastroPageComponent } from './pages/cadastro-page/cadastro-page.component';
 
 export const routes: Routes = [
     { 
@@ -21,8 +22,8 @@ export const routes: Routes = [
         component: ListagemVagasComponent,
     },
     {
-        path: "cadastro-candidato",
-        component: CadastroCandidatoComponent,
+        path: "cadastro",
+        component: CadastroPageComponent,
     },
     {
         path: "candidato-dashboard",

@@ -8,7 +8,7 @@ import { FormsModule } from '@angular/forms';
 import { RouterLink } from '@angular/router';
 
 @Component({
-  selector: 'app-login-candidato',
+  selector: 'app-login-page',
   templateUrl: './login-page.component.html',
   imports: [CommonModule, FormsModule, RouterLink],
   styleUrls: ['./login-page.component.css']
