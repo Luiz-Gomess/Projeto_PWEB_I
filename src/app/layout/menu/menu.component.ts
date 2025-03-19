@@ -3,9 +3,9 @@ import { MatMenuModule } from '@angular/material/menu';
 import { MatButtonModule } from '@angular/material/button';
 import { MatIconModule } from '@angular/material/icon';
 import { Router } from '@angular/router';
-import { CandidatoStateService } from '../../services/candidato-state.service';
-import { CandidatoService } from '../../services/candidato.service';
-import { Candidato } from '../../models/candidato';
+import { CandidatoStateService } from '../../shared/services/candidato-state.service';
+import { CandidatoService } from '../../shared/services/candidato.service';
+import { Candidato } from '../../shared/models/candidato';
 
 @Component({
   selector: 'app-menu',

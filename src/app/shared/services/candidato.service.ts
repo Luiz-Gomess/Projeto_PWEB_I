@@ -24,7 +24,7 @@ export class CandidatoService {
         if (candidatos.length > 0) {
           return candidatos[0];
         } else {
-          throw new Error('Candidato não encontrado'); // Lança erro corretamente
+          throw new Error('Candidato não encontrado');
         }
       })
     );
@@ -52,28 +52,11 @@ export class CandidatoService {
   }
 
   cadastrar(candidato: Candidato): Observable<Candidato> {
-    return this.listarCandidatos().pipe(
-      switchMap((candidatos: Candidato[]) => {
-        const candidatoExistente = candidatos.find(c => c.cpf === candidato.cpf);
-        if (candidatoExistente) {
-          return throwError(() => new Error('CPF já cadastrado'));
-        } else {
-          return this.http.post<Candidato>(this.apiUrl, candidato);
-        }
-      })
-    );
+    return this.http.post<Candidato>(this.apiUrl, candidato)
   }
 
   deletarPerfil(cpf: string): Observable<any> {
-    return this.buscarCandidato(cpf).pipe(
-      switchMap((candidato) => {
-        if (candidato) {
-          return this.http.delete(`${this.apiUrl}/${candidato.id}`);
-        } else {
-          return throwError(() => new Error('Candidato não encontrado'));
-        }
-      })
-    );
+    return this.http.delete(`${this.apiUrl}/${cpf}`);
   }
 
   listarCandidaturas(listaIDSVagas: string[]): Observable<Vaga[]> {
@@ -94,7 +77,7 @@ export class CandidatoService {
               return throwError(() => new Error('Candidato já cadastrado nesta vaga'));
             }
 
-            vaga.candidatos.push(candidato.cpf);
+            vaga.candidaturas.push(candidato.cpf);
             candidato.candidaturas.push(idVaga);
   
             return this.vagaService.atualizarVaga(vaga).pipe(
@@ -118,10 +101,10 @@ export class CandidatoService {
               return throwError(() => new Error('Candidato não está candidatado nesta vaga'));
             }
 
-            const candIndex = vaga.candidatos.indexOf(candidato.cpf)
+            const candIndex = vaga.candidaturas.indexOf(candidato.cpf)
             const vagaIndex = candidato.candidaturas.indexOf(idVaga)
 
-            vaga.candidatos.splice(candIndex, 1);
+            vaga.candidaturas.splice(candIndex, 1);
             candidato.candidaturas.splice(vagaIndex, 1);
   
             return this.vagaService.atualizarVaga(vaga).pipe(

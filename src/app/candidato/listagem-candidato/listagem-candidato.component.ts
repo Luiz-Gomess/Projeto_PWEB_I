@@ -1,7 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { MatTableDataSource, MatTableModule } from '@angular/material/table';
-import { CandidatoService } from '../../services/candidato.service';
-import { Candidato } from '../../models/candidato';
+import { CandidatoService } from '../../shared/services/candidato.service';
+import { Candidato } from '../../shared/models/candidato';
 import { CommonModule } from '@angular/common';
 
 @Component({

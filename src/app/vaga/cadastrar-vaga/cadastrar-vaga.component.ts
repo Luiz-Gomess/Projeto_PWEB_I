@@ -1,6 +1,6 @@
 import { Component, OnInit } from '@angular/core';
-import { Vaga } from '../../models/vaga';
-import { VagaService } from '../../services/vaga.service';
+import { Vaga } from '../../shared/models/vaga';
+import { VagaService } from '../../shared/services/vaga.service';
 import { CommonModule } from '@angular/common';
 import { FormsModule } from '@angular/forms';
 import { Router } from '@angular/router';
@@ -20,7 +20,7 @@ export class CadastrarVagaComponent implements OnInit {
     empresa: '',
     local: '',
     requisitos: [],
-    candidatos: []
+    candidaturas: []
   };
 
   requisitosInput: string = '';
@@ -49,7 +49,7 @@ export class CadastrarVagaComponent implements OnInit {
           empresa: '',
           local: '',
           requisitos: [],
-          candidatos: []
+          candidaturas: []
         };
         
         this.router.navigate(['/listagem-vagas'])

@@ -1,6 +1,6 @@
 import { Component, OnInit, ViewEncapsulation } from '@angular/core';
-import { CandidatoStateService } from '../../services/candidato-state.service';
-import { Candidato } from '../../models/candidato';
+import { CandidatoStateService } from '../../shared/services/candidato-state.service';
+import { Candidato } from '../../shared/models/candidato';
 import { Router } from '@angular/router';
 import { NavbarComponent } from '../../layout/navbar/navbar.component';
 import { FooterComponent } from '../../layout/footer/footer.component';

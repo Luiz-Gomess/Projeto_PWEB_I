@@ -1,3 +1,5 @@
+import { Candidato } from "./candidato";
+
 export class Vaga{
     constructor(
         public id: string,
@@ -7,6 +9,6 @@ export class Vaga{
         public empresa: string,
         public local: string,
         public requisitos: string[] = [],
-        public candidatos: string[] = [],
+        public candidaturas: Candidato[] = [],
     ){}
 }

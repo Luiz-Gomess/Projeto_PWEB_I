@@ -1,7 +1,7 @@
 import { Component, OnInit } from '@angular/core';
-import { CandidatoService } from '../../services/candidato.service';
-import { CandidatoStateService } from '../../services/candidato-state.service';
-import { Candidato } from '../../models/candidato';
+import { CandidatoService } from '../../shared/services/candidato.service';
+import { CandidatoStateService } from '../../shared/services/candidato-state.service';
+import { Candidato } from '../../shared/models/candidato';
 import { Router } from '@angular/router';
 import { CommonModule } from '@angular/common';
 import { FormsModule } from '@angular/forms';

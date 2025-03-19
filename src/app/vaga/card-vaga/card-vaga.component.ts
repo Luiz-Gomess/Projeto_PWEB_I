@@ -1,10 +1,10 @@
 import { Component } from '@angular/core';
-import { Vaga } from '../../models/vaga';
+import { Vaga } from '../../shared/models/vaga';
 import { Input } from '@angular/core';
 import { CommonModule } from '@angular/common';
-import { CandidatoStateService } from '../../services/candidato-state.service';
-import { Candidato } from '../../models/candidato';
-import { CandidatoService } from '../../services/candidato.service';
+import { CandidatoStateService } from '../../shared/services/candidato-state.service';
+import { Candidato } from '../../shared/models/candidato';
+import { CandidatoService } from '../../shared/services/candidato.service';
 
 @Component({
   selector: 'app-card-vaga',

@@ -1,6 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { RouterModule, Router } from '@angular/router';
-import { CandidatoStateService } from '../../services/candidato-state.service';
+import { CandidatoStateService } from '../../shared/services/candidato-state.service';
 import { MenuComponent } from '../menu/menu.component';
 import { CommonModule } from '@angular/common';
 

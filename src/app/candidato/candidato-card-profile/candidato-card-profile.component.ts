@@ -1,5 +1,5 @@
 import { Component, Input } from '@angular/core';
-import { Candidato } from '../../models/candidato';
+import { Candidato } from '../../shared/models/candidato';
 import { CommonModule } from '@angular/common';
 
 @Component({

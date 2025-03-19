@@ -1,11 +1,11 @@
 import { Component, OnInit } from '@angular/core';
-import { CandidatoService } from '../../services/candidato.service';
-import { Candidato } from '../../models/candidato';
-import { Vaga } from '../../models/vaga';
+import { CandidatoService } from '../../shared/services/candidato.service';
+import { Candidato } from '../../shared/models/candidato';
+import { Vaga } from '../../shared/models/vaga';
 import { CommonModule } from '@angular/common';
 import { FormsModule } from '@angular/forms';
 import { Router, RouterLink } from '@angular/router';
-import { CandidatoStateService } from '../../services/candidato-state.service';
+import { CandidatoStateService } from '../../shared/services/candidato-state.service';
 
 @Component({
   selector: 'app-cadastro-candidato',

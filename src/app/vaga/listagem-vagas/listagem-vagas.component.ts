@@ -1,6 +1,6 @@
 import { Component, Input, OnInit } from '@angular/core';
-import { VagaService } from '../../services/vaga.service';
-import { Vaga } from '../../models/vaga';
+import { VagaService } from '../../shared/services/vaga.service';
+import { Vaga } from '../../shared/models/vaga';
 import { CommonModule } from '@angular/common';
 import { FormsModule } from '@angular/forms';
 import { CardVagaComponent } from '../card-vaga/card-vaga.component';
@@ -17,7 +17,7 @@ export class ListagemVagasComponent implements OnInit  {
   vagas: Vaga[] = [];
   vaga: Vaga = new Vaga('', '', '', 0, '', '', []);
 
-  constructor(private vagaService: VagaService) { } // Injete o serviço
+  constructor(private vagaService: VagaService) { } 
 
   ngOnInit(): void {
     this.vagaService.listarVagas().subscribe(vagas => {
