@@ -203,6 +203,24 @@
       "senha": "123456",
       "habilidades": [],
       "candidaturas": []
+    },
+    {
+      "id": "9a13",
+      "cpf": "08243399322",
+      "nome": "lucas",
+      "email": "lucaskaique742@gmail.com",
+      "senha": "tijolo1",
+      "habilidades": [],
+      "candidaturas": []
+    },
+    {
+      "id": "2b9f",
+      "cpf": "08243399322",
+      "nome": "Lucas Kaique Valerio Soares",
+      "email": "lucaskaique742@gmail.com",
+      "senha": "tijolo1",
+      "habilidades": [],
+      "candidaturas": []
     }
   ]
 }
