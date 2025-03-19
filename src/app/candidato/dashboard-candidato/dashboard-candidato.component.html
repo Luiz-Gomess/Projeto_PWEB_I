@@ -32,6 +32,20 @@
       <h1>Vagas</h1>
       <button (click)="navigateToListagemVagas()">Ver vagas disponíveis</button>
     </div>
+
+    <div class="notificacoes" *ngIf="isActive('notificacoes')">
+      <h1>Notificações</h1>
+
+      <div class="notificacao" *ngFor="let notificacao of notificacoes">
+        <div class="notificacao-info">
+          <p>{{ notificacao.mensagem }}</p>
+        </div>
+        <div class="notificacao-actions">
+          <button (click)="marcarNotificacaoComoLida(notificacao.id ? notificacao.id : '')">Marcar como lida</button>
+        </div>
+      </div>
+    </div>
+
   </div>
 
 </div>
