@@ -6,5 +6,6 @@ export class Candidato{
         public senha : string,
         public habilidades: string[] = [],
         public candidaturas : string[] = [],
+        public resumo : string = "",
     ){}
 }

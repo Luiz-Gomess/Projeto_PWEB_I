@@ -11,45 +11,92 @@ import { Notificacao, NotificacaoFirestoreService } from '../../shared/services/
 import { Vaga } from '../../shared/models/vaga';
 import { CandidatoService } from '../../shared/services/candidato.service';
 import { CardVagaComponent } from '../../vaga/card-vaga/card-vaga.component';
+import { FormArray, FormBuilder, FormGroup, FormsModule, ReactiveFormsModule } from '@angular/forms';
 
 @Component({
   selector: 'app-candidato-dashboard',
   templateUrl: './dashboard-candidato.component.html',
-  imports: [NavbarComponent, FooterComponent, MatIcon, CandidatoCardProfileComponent, CommonModule, CardVagaComponent],
+  standalone: true,
+  imports: [
+    NavbarComponent, 
+    FooterComponent, 
+    MatIcon, 
+    CandidatoCardProfileComponent, 
+    CommonModule, 
+    CardVagaComponent, 
+    FormsModule, 
+    ReactiveFormsModule
+  ],
   styleUrl: './dashboard-candidato.component.css',
   encapsulation: ViewEncapsulation.None,
 })
-
 export class CandidatoDashboardComponent implements OnInit {
-  candidato: Candidato = new Candidato(
-    '',
-    '',
-    '',
-    ''
-  );
-
+  candidato!: Candidato;
   candidaturas: Vaga[] | null = null;
-
   activeSection: string = 'perfil';
   sidebarOpen: boolean = true; 
-  notificacoes: Notificacao[] = [
-    { id: '1', idUsuario: '123', mensagem: 'Você foi aprovado na vaga de Desenvolvedor Front-end', lida: false },
-    { id: '2', idUsuario: '123', mensagem: 'Você foi reprovado na vaga de Desenvolvedor Back-end', lida: false },
-    { id: '3', idUsuario: '123', mensagem: 'Você foi aprovado na vaga de Desenvolvedor Fullstack', lida: false },
-    { id: '4', idUsuario: '123', mensagem: 'Você foi reprovado na vaga de Desenvolvedor Mobile', lida: true },
-  ];
+  perfilForm!: FormGroup;
+  habilidadesInput: string = '';
+  listaHabilidades: string[] = [];
+
+  notificacoes: Notificacao[] = [];
 
   sidebarLinks = [
     { label: 'Perfil', icon: 'person', section: 'perfil' },
+    { label: "Atualizar Perfil", icon: "edit", section: "atualizar-perfil" },
     { label: 'Candidaturas', icon: 'work', section: 'candidaturas' },
     { label: "Notificações", icon: "notifications", section: "notificacoes" },
     { label: 'Vagas', icon: 'search', section: 'vagas' }
   ];
 
-  constructor(private userStateService: UserStateService, private router: Router, private notificacaoService: NotificacaoFirestoreService, private candidatoService: CandidatoService) {}
+  constructor(
+    private userStateService: UserStateService, 
+    private router: Router, 
+    private notificacaoService: NotificacaoFirestoreService, 
+    private candidatoService: CandidatoService, 
+    private fb: FormBuilder
+  ) {}
+
+  ngOnInit() {
+    if (!this.userStateService.getCandidato()) {
+      this.router.navigate(['/login']);
+    }
+
+    this.candidato = this.userStateService.getCandidato() as Candidato;
+    this.listaHabilidades = this.candidato.habilidades || [];
+    
+    this.notificacaoService.listar(this.candidato.cpf).subscribe((notificacoes) => {
+      this.notificacoes = notificacoes;
+    });
+  }
+
+  adicionarHabilidade() {
+    if (this.habilidadesInput.trim()) {
+      this.listaHabilidades.push(this.habilidadesInput.trim());
+      this.candidato.habilidades = this.listaHabilidades;
+      this.habilidadesInput = ''; // Limpa o input
+    }
+  }
+
+  removerHabilidade(index: number) {
+    this.listaHabilidades.splice(index, 1); // Remove a habilidade do array
+  }
+
+  salvarAlteracoes() {
+    this.candidatoService.atualizarCandidato(this.candidato).subscribe({
+      next: (candidato) => {
+        this.candidato = candidato;
+        this.userStateService.setCandidato(candidato);
+        alert('Perfil atualizado com sucesso!');
+      },
+      error: (err) => {
+        console.error('Erro ao atualizar candidato:', err);
+      }
+    });
+  }
 
   navigateToListagemVagas() {
-    this.router.navigate(['/listagem-vagas'])
+    this.router.navigate(['/listagem-vagas']);
   }
 
   isActive(section: string): boolean {
@@ -57,20 +104,16 @@ export class CandidatoDashboardComponent implements OnInit {
   }
 
   setActiveSection(section: string) {
-    if(section === 'candidaturas') {
-
+    if (section === 'candidaturas') {
       this.candidatoService.listarCandidaturas(this.candidato.cpf).subscribe((candidaturas: Vaga[]) => {
         this.candidaturas = candidaturas;
       });
-
-      console.log(this.candidaturas);
     }
-
     this.activeSection = section;
   }
 
   toggleSidebar() {
-    this.sidebarOpen = !this.sidebarOpen; 
+    this.sidebarOpen = !this.sidebarOpen;
   }
 
   marcarNotificacaoComoLida(id: string) {
@@ -86,14 +129,4 @@ export class CandidatoDashboardComponent implements OnInit {
       this.notificacoes = notificacoes;
     });
   }
-  
-  ngOnInit() {
-    if(!this.userStateService.getCandidato()) {
-      this.router.navigate(['/login-candidato'])
-    }
-    this.candidato = this.userStateService.getCandidato() as Candidato;
-  }
-
 }
-
-

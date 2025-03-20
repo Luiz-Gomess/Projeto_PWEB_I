@@ -5,11 +5,11 @@
       <h2 class="profile-name">{{ candidato.nome }}</h2>
 
       <h3 class="profile-header">Sobre </h3>
-      <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Minus itaque exercitationem blanditiis sapiente eos laudantium accusantium! Corporis quod exercitationem repellendus dignissimos neque eaque, quae, saepe, numquam laborum recusandae sint qui? Lorem ipsum dolor sit, amet consectetur adipisicing elit. Nobis magnam porro dolorem rerum tenetur temporibus earum dolor ratione repellendus sunt quibusdam, architecto eligendi mollitia maiores similique saepe, totam ullam esse.</p>
+      <p>{{candidato.resumo ? candidato.resumo : "sem descrição"}} </p>
 
       <h3 class="profile-header">Competências</h3>
       <div class="profile-skills">
-          <div class="skills" *ngFor="let hab of hab">
+          <div class="skills" *ngFor="let hab of candidato.habilidades">
               <p>{{ hab }}</p>
           </div>
       </div>

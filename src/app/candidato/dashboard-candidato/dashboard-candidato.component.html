@@ -24,6 +24,34 @@
   <div class="content">
     <app-candidato-card-profile [candidato]="candidato" *ngIf="isActive('perfil')"></app-candidato-card-profile>
 
+    <div class="atualizar-perfil" *ngIf="isActive('atualizar-perfil')">
+      <h1>Editar Perfil</h1>
+      <form (ngSubmit)="salvarAlteracoes()">
+        <label>Nome</label>
+        <input type="text" [(ngModel)]="candidato.nome" name="nome">
+    
+        <label>Sobre</label>
+        <textarea [(ngModel)]="candidato.resumo" name="resumo"></textarea>
+    
+        <div class="profile-skills">
+          <label>Competências</label>
+          <input type="text" [(ngModel)]="habilidadesInput" name="habilidadesInput" (keyup.enter)="adicionarHabilidade()">
+          <button type="button" class="add-skill" (click)="adicionarHabilidade()">Adicionar Competência</button>
+          <ul>
+            <li *ngFor="let habilidade of listaHabilidades; let i = index">
+              {{ habilidade }}
+              <span class="remove-skill" (click)="removerHabilidade(i)"><mat-icon class="icon-delete">delete</mat-icon></span>
+            </li>
+          </ul>
+        </div>
+    
+        <label>Email</label>
+        <input type="email" [(ngModel)]="candidato.email" name="email" value="{{ candidato.email }}">
+    
+        <button type="submit" >Salvar</button>
+      </form>
+    </div>
+
     <div class="candidaturas" *ngIf="isActive('candidaturas')">
       <h1>Minhas Candidaturas</h1>
       <div class="listagem-vagas-container">

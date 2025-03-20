@@ -24,7 +24,7 @@ export class CandidatoService {
   }
 
   atualizarCandidato(candidato: any): Observable<Candidato> {
-    return this.http.put<Candidato>(`${this.apiUrl}/${candidato.id}`, candidato);
+    return this.http.put<Candidato>(`${this.apiUrl}/${candidato.cpf}`, candidato);
   }
 
   // Método para logar um candidato improvisado para fins de teste
@@ -35,6 +35,7 @@ export class CandidatoService {
 
     return this.buscarCandidato(cpf).pipe(
       switchMap((candidato) => {
+        console.log(candidato);
         if (candidato.senha === senha) {
           return of(candidato);
         } else {

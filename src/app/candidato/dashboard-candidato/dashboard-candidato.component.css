@@ -104,6 +104,70 @@ button:hover {
     width: 100%;
   }
 
+  .atualizar-perfil {
+    padding: 20px;
+    margin: auto;
+    width: 80%;
+    margin-top: 20px;
+    background: var(--background);
+    border-radius: 8px;
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
+  }
+  
+  .atualizar-perfil label {
+    display: block;
+    margin-top: 10px;
+    font-weight: bold;
+  }
+  
+  .atualizar-perfil input, .atualizar-perfil textarea {
+    width: 100%;
+    padding: 8px;
+    margin-top: 5px;
+    border: 1px solid var(--border-color);
+    border-radius: 4px;
+  }
+
+  textarea {
+    height: 150px;
+  }
+
+  .add-skill {
+    background-color: var(--corporation);
+    width: 20%;
+    margin-top: 10px;
+  } 
+  .atualizar-perfil button:hover {
+    background: var(--type-complement);
+  }
+
+  .profile-skills ul {
+    display: flex;
+    gap: 10px;
+  }
+
+  .profile-skills ul li {
+    background-color: var(--type-complement);
+    display: flex;
+    margin-top: 20px;
+    gap: 7px;
+    padding: 10px;
+    border-radius: 20px;
+  }
+
+  .remove-skill {
+    color: white;
+    cursor: pointer;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+  }
+
+  .icon-delete {
+    font-size: 1.4rem;
+    color: rgb(204, 19, 19);
+  }
+
   .candidaturas {
 
   }
