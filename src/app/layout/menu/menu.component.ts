@@ -36,9 +36,12 @@ export class MenuComponent {
       this.router.navigate(['/'])
     } else if (item === "Excluir") {
       this.deletarCandidato(this.candidato.cpf)
-      this.router.navigate(['/cadastro-candidato'])
+      this.router.navigate(['/'])
     } else {
-      this.router.navigate(['/candidato-dashboard'])
+      if(this.userStateService.getTypeUser() === 'c')
+        this.router.navigate(['/candidato-dashboard'])
+      else
+        this.router.navigate(['/recrutador-dashboard'])
     }
   }
 

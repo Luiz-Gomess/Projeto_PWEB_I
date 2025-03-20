@@ -55,8 +55,8 @@
     <div class="candidaturas" *ngIf="isActive('candidaturas')">
       <h1>Minhas Candidaturas</h1>
       <div class="listagem-vagas-container">
-        <div class="list-vagas" *ngFor="let candidatura of candidaturas">
-            <app-card-vaga [vaga]="candidatura"></app-card-vaga>
+        <div class="list-vagas" *ngFor="let candidatura of candidaturas; let i = index">
+            <app-card-vaga [vaga]="candidatura" [local]="'candidaturas'"></app-card-vaga>
         </div>
       </div>
     </div>
@@ -73,9 +73,9 @@
         <div class="notificacao-info">
           <p>{{ notificacao.mensagem }}</p>
         </div>
-        <div class="notificacao-actions">
+        <!-- <div class="notificacao-actions">
           <button (click)="marcarNotificacaoComoLida(notificacao.id ? notificacao.id : '')">Marcar como lida</button>
-        </div>
+        </div> -->
       </div>
     </div>
 

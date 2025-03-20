@@ -12,6 +12,7 @@ import { Vaga } from '../../shared/models/vaga';
 import { CandidatoService } from '../../shared/services/candidato.service';
 import { CardVagaComponent } from '../../vaga/card-vaga/card-vaga.component';
 import { FormArray, FormBuilder, FormGroup, FormsModule, ReactiveFormsModule } from '@angular/forms';
+import { AlertService } from '../../shared/services/alert.service';
 
 @Component({
   selector: 'app-candidato-dashboard',
@@ -54,7 +55,8 @@ export class CandidatoDashboardComponent implements OnInit {
     private router: Router, 
     private notificacaoService: NotificacaoFirestoreService, 
     private candidatoService: CandidatoService, 
-    private fb: FormBuilder
+    private fb: FormBuilder,
+    private alertService: AlertService
   ) {}
 
   ngOnInit() {
@@ -67,6 +69,7 @@ export class CandidatoDashboardComponent implements OnInit {
     
     this.notificacaoService.listar(this.candidato.cpf).subscribe((notificacoes) => {
       this.notificacoes = notificacoes;
+      console.log(this.notificacoes)
     });
   }
 
@@ -87,7 +90,7 @@ export class CandidatoDashboardComponent implements OnInit {
       next: (candidato) => {
         this.candidato = candidato;
         this.userStateService.setCandidato(candidato);
-        alert('Perfil atualizado com sucesso!');
+        this.alertService.showSuccess("Alterações Salvas")
       },
       error: (err) => {
         console.error('Erro ao atualizar candidato:', err);

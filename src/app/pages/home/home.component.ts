@@ -7,6 +7,7 @@ import { SlickCarouselModule } from 'ngx-slick-carousel';
 import { FooterComponent } from '../../layout/footer/footer.component';
 import { NavbarComponent } from '../../layout/navbar/navbar.component';
 import { Router } from '@angular/router';
+import { UserStateService } from '../../shared/services/user-state.service';
 
 @Component({
   selector: 'app-home',
@@ -17,7 +18,7 @@ import { Router } from '@angular/router';
 export class HomeComponent implements OnInit {
   vagas: Vaga[] = [];
 
-  constructor(private vagaService: VagaService, private router: Router) {}
+  constructor(private vagaService: VagaService, private router: Router, private userStateService: UserStateService) {}
 
   slideConfig = {
     slidesToShow: 2,
@@ -46,7 +47,12 @@ export class HomeComponent implements OnInit {
   };
 
   navigateToNewVaga () {
-    this.router.navigate(['/cadastrar-vaga'])
+    if(this.userStateService.getRecruiter())
+      this.router.navigate(['/cadastrar-vaga'])
+    else {
+      this.userStateService.setTypeUser('r')
+      this.router.navigate(['/cadastro'])
+    }
   }
 
   navigateToListagemVagas () {

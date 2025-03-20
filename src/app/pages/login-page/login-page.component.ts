@@ -64,6 +64,10 @@ export class LoginPageComponent implements OnInit {
             this.message = 'CPF ou senha incorretos.';
             this.messageType = 'error';
           }
+        },
+        error: (err) => {
+          this.message = err;
+          this.messageType = 'error';
         }
       });
     }

@@ -4,7 +4,6 @@ import { HttpClient } from '@angular/common/http';
 import { Candidato } from '../models/candidato';
 import { Vaga } from '../models/vaga';
 import { VagaService } from './vaga.service';
-import { environment } from '../../../environments/environments';
 
 @Injectable({
   providedIn: 'root'

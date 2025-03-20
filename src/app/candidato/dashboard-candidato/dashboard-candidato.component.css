@@ -168,8 +168,11 @@ button:hover {
     color: rgb(204, 19, 19);
   }
 
-  .candidaturas {
-
+  .listagem-vagas-container {
+    margin-top: 20px;
+    display: flex;
+    gap: 10px;
+    flex-wrap: wrap;
   }
 
   .notificacao {

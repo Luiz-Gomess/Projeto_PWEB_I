@@ -1,5 +1,11 @@
 <div class="card-vaga">
-    <h2>{{ vaga.titulo }}</h2>
+    <div class="editavel">
+        <h2>{{ vaga.titulo }}</h2> 
+        <span *ngIf="local === 'editar'" >
+        <mat-icon (click)="editarVaga()">edit</mat-icon>
+        <mat-icon (click)="excluirVaga()">delete</mat-icon>
+    </span>
+</div>
     <p class="company">{{ vaga.empresa }}</p>
     <p class="location"><strong>Local:</strong> {{ vaga.local }}</p>
     <p><strong>Salário:</strong> R$ {{ vaga.salario }}</p>
@@ -11,6 +17,7 @@
     </div>
 
     <p class="description">{{ vaga.descricao }}</p>
-    <button (click)="candidatar()" *ngIf="candidato">Enviar currículo</button>
+    <button (click)="candidatar()" *ngIf="candidato && !local">Enviar currículo</button>
     <button (click)="verCandidatos()" *ngIf="recrutador">Mostrar candidaturas</button>
+    <button (click)="deletarCandidatura()" *ngIf="local === 'candidaturas'">Cancelar candidatura</button>
 </div>

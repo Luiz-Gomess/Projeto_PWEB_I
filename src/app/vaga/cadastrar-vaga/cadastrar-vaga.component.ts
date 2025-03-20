@@ -6,6 +6,7 @@ import { FormsModule } from '@angular/forms';
 import { Router } from '@angular/router';
 import { Recrutador } from '../../shared/models/recrutador';
 import { UserStateService } from '../../shared/services/user-state.service';
+import { AlertService } from '../../shared/services/alert.service';
 
 @Component({
   selector: 'app-cadastrar-vaga',
@@ -14,7 +15,7 @@ import { UserStateService } from '../../shared/services/user-state.service';
   styleUrls: ['./cadastrar-vaga.component.css']
 })
 export class CadastrarVagaComponent implements OnInit {
-  vaga: Vaga = {
+  vaga: any = {
     id: '',
     titulo: '',
     descricao: '',
@@ -22,20 +23,26 @@ export class CadastrarVagaComponent implements OnInit {
     empresa: '',
     local: '',
     requisitos: [],
-    candidaturas: []
   };
 
   recrutador: Recrutador | undefined;
 
   requisitosInput: string = '';
 
-  constructor(private vagaService: VagaService, private router: Router, private userStateService: UserStateService) { }
+  constructor(private vagaService: VagaService, private router: Router, 
+    private userStateService: UserStateService,
+    private alertService: AlertService
+  ) { }
 
   ngOnInit(): void {
     this.recrutador = this.userStateService.getRecruiter() as Recrutador;
     if (!this.recrutador) {
       this.router.navigate(['/login']);
     }
+
+    let localVaga = JSON.parse(window.localStorage.getItem('vaga') as string) as Vaga
+    if(localVaga)
+      this.vaga = localVaga
   }
 
   adicionarRequisito(): void {
@@ -48,8 +55,8 @@ export class CadastrarVagaComponent implements OnInit {
   onSubmit(): void {
     console.log(this.recrutador)
     this.vagaService.criarVaga(this.vaga, this.recrutador?.cpf as string).subscribe({
-      next: (vaga) => {
-        console.log('Vaga criada com sucesso:', vaga);
+      next: (data) => {
+        this.alertService.showSuccess(data.message)
         this.vaga = {
           id: '',
           titulo: '',
@@ -58,8 +65,10 @@ export class CadastrarVagaComponent implements OnInit {
           empresa: '',
           local: '',
           requisitos: [],
-          candidaturas: []
         };
+        
+        if(window.localStorage.getItem('vaga'))
+          window.localStorage.removeItem('vaga')
         
         this.router.navigate(['/recrutador-dashboard']);
       },

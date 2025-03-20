@@ -29,7 +29,7 @@ export class VagaService {
     return this.http.put<Vaga>(`${this.apiUrl}/${vaga.id}`,vaga)
   }
 
-  criarVaga(vaga: Vaga, cpf: string): Observable<Vaga>{
+  criarVaga(vaga: Vaga, cpf: string): Observable<any>{
     return this.http.post<Vaga>(`${this.apiUrl}/${cpf}`, vaga);
   }  
 
@@ -37,24 +37,4 @@ export class VagaService {
     return this.http.delete(`${this.apiUrl}/${id}`);
   }
 
-  //Verifica se a vaga existe
-  verificacaoVaga(id: string): Observable<boolean>{
-    return this.buscarVaga(id).pipe(
-      map((vaga) => {
-        return vaga ? true : false;
-      })
-    )
-  }
-
-  //Gera um id para a vaga
-  gerarIdVaga():Observable<string>{
-  return this.listarVagas().pipe(
-    map((vagas) => {
-      if(vagas.length === 0){
-        return '1';
-      }else{
-        return String(Number(vagas[vagas.length-1].id) + 1);
-      }
-    })
-  )}
 }

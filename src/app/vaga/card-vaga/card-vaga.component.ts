@@ -7,22 +7,30 @@ import { Candidato } from '../../shared/models/candidato';
 import { CandidatoService } from '../../shared/services/candidato.service';
 import { Recrutador } from '../../shared/models/recrutador';
 import { Router } from '@angular/router';
+import { AlertService } from '../../shared/services/alert.service';
+import { MatIcon } from '@angular/material/icon';
+import { VagaService } from '../../shared/services/vaga.service';
+import { NotificacaoFirestoreService } from '../../shared/services/notificationFirestore.service';
 
 @Component({
   selector: 'app-card-vaga',
-  imports: [CommonModule],
+  imports: [CommonModule, MatIcon],
   templateUrl: './card-vaga.component.html',
   styleUrl: './card-vaga.component.css'
 })
 export class CardVagaComponent {
   @Input() vaga!: Vaga;
+  @Input() local!: string;
   candidato?: Candidato;
   recrutador?: Recrutador;
   type = "";
 
   constructor(private userStateService: UserStateService, 
     private candidatoService: CandidatoService,
-    private router: Router
+    private router: Router,
+    private alertService: AlertService,
+    private vagaService: VagaService,
+    private notificationFirestoreService: NotificacaoFirestoreService
   ){}
 
   ngOnInit() {
@@ -38,8 +46,10 @@ export class CardVagaComponent {
   candidatar() {
     if(this.candidato?.cpf) {
       this.candidatoService.candidatar(this.vaga.id, this.candidato?.cpf).subscribe({
-        next: () => {
-          console.log('Candidatura realizada com sucesso!');
+        next: (data) => {
+          this.alertService.showSuccess(data.message)
+          this.candidato?.candidaturas.push(this.vaga.id)
+          this.userStateService.setCandidato(this.candidato as Candidato)
         },
         error: (err) => {
           console.error('Erro ao candidatar:', err);
@@ -53,11 +63,30 @@ export class CardVagaComponent {
     this.router.navigate(['/listar-candidaturas']);
   }
 
+  editarVaga() {
+    window.localStorage.setItem('vaga', JSON.stringify(this.vaga))
+    this.router.navigate(['/cadastrar-vaga'])
+  }
+
+  excluirVaga() {
+    let msg = `A vaga ${this.vaga.titulo} que você se candidatou foi excluida!`
+    console.log(this.vaga.id)
+    this.notificationFirestoreService.adicionar(this.vaga.id, msg)
+
+    this.vagaService.deletarVaga(this.vaga.id).subscribe({
+      next: (data) => {
+        this.alertService.showSuccess(data.message)
+        
+      }
+    })
+  }
+
   deletarCandidatura() {
     if(this.candidato?.cpf) {
       this.candidatoService.removerCandidatura(this.vaga.id, this.candidato?.cpf).subscribe({
-        next: () => {
-          console.log('Candidatura deletada com sucesso!');
+        next: (data) => {
+          this.alertService.showSuccess(data.message)
+
         },
         error: (err) => {
           console.error('Erro ao deletar candidatura:', err);
