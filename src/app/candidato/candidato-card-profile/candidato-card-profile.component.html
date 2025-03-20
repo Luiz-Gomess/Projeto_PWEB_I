@@ -12,7 +12,8 @@
           <div class="skills" *ngFor="let hab of candidato.habilidades">
               <p>{{ hab }}</p>
           </div>
-      </div>
+        </div>
+        <p *ngIf="candidato.habilidades.length === 0">Sem Competências</p>
 
       <h3 class="profile-header">Dados pessoais</h3>
       <p><strong>CPF: </strong> {{candidato.cpf}}</p>

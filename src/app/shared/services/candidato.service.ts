@@ -24,7 +24,7 @@ export class CandidatoService {
   }
 
   atualizarCandidato(candidato: any): Observable<Candidato> {
-    return this.http.put<Candidato>(`${this.apiUrl}/${candidato.cpf}`, candidato);
+    return this.http.put<Candidato>(`${this.apiUrl}`, candidato);
   }
 
   // Método para logar um candidato improvisado para fins de teste

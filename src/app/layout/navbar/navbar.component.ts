@@ -29,7 +29,6 @@ export class NavbarComponent {
     this.router.navigate(['/cadastro']);
   }
 
-
   ngOnInit() {
     if(this.userStateService.getCandidato()) {
       this.isAuthenticated = true;

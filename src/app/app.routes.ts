@@ -1,12 +1,13 @@
 import { Routes } from '@angular/router';
 import { ListagemVagasComponent } from './vaga/listagem-vagas/listagem-vagas.component';
-import { CadastroCandidatoComponent } from './candidato/cadastro-candidato/cadastro-candidato.component';
 import { HomeComponent } from './pages/home/home.component';
 import { CandidatoDashboardComponent} from './candidato/dashboard-candidato/dashboard-candidato.component';
 import { ListagemCandidatoComponent } from './candidato/listagem-candidato/listagem-candidato.component';
 import { CadastrarVagaComponent } from './vaga/cadastrar-vaga/cadastrar-vaga.component';
 import { LoginPageComponent } from './pages/login-page/login-page.component';
 import { CadastroPageComponent } from './pages/cadastro-page/cadastro-page.component';
+import { RecrutadorDashboardComponent } from './recrutador/recrutador-dashboard/recrutador-dashboard.component';
+import { ListarCandidaturasComponent } from './vaga/listar-candidaturas/listar-candidaturas.component';
 
 export const routes: Routes = [
     { 
@@ -40,5 +41,13 @@ export const routes: Routes = [
     {
         path: "login",
         component: LoginPageComponent
+    },
+    {
+        path: "recrutador-dashboard",
+        component: RecrutadorDashboardComponent
+    },
+    {
+        path: "listar-candidaturas",
+        component: ListarCandidaturasComponent
     }
 ];

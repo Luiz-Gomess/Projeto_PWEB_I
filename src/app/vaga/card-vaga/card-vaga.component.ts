@@ -5,6 +5,8 @@ import { CommonModule } from '@angular/common';
 import { UserStateService } from '../../shared/services/user-state.service';
 import { Candidato } from '../../shared/models/candidato';
 import { CandidatoService } from '../../shared/services/candidato.service';
+import { Recrutador } from '../../shared/models/recrutador';
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-card-vaga',
@@ -15,11 +17,22 @@ import { CandidatoService } from '../../shared/services/candidato.service';
 export class CardVagaComponent {
   @Input() vaga!: Vaga;
   candidato?: Candidato;
+  recrutador?: Recrutador;
+  type = "";
 
-  constructor(private userStateService: UserStateService, private candidatoService: CandidatoService){}
+  constructor(private userStateService: UserStateService, 
+    private candidatoService: CandidatoService,
+    private router: Router
+  ){}
 
   ngOnInit() {
-    this.candidato = this.userStateService.getCandidato() as Candidato;
+    this.type = this.userStateService.getTypeUser();
+    if(this.type === 'c') {
+      this.candidato = this.userStateService.getCandidato() as Candidato;
+    }
+    else if(this.type === 'r') {
+      this.recrutador = this.userStateService.getRecruiter() as Recrutador;
+    }
   }
 
   candidatar() {
@@ -33,6 +46,11 @@ export class CardVagaComponent {
         }
       });
     }
+  }
+
+  verCandidatos() {
+    window.localStorage.setItem('vagaId', this.vaga.id);
+    this.router.navigate(['/listar-candidaturas']);
   }
 
   deletarCandidatura() {

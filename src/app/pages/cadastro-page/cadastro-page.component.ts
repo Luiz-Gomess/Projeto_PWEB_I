@@ -7,6 +7,7 @@ import { FormsModule } from '@angular/forms';
 import { Router, RouterLink } from '@angular/router';
 import { UserStateService } from '../../shared/services/user-state.service';
 import { Recrutador } from '../../shared/models/recrutador';
+import { RecrutadorService } from '../../shared/services/recrutador.service';
 
 @Component({
   selector: 'app-cadastro-page',
@@ -19,14 +20,19 @@ export class CadastroPageComponent {
   type = ""
   user: Candidato | Recrutador = this.type == 'c' ? new Candidato('', '', '', '') : new Recrutador('', '', '', "");
   
-  constructor(private candidatoService: CandidatoService, private router: Router, private userStateService: UserStateService) {}
+  constructor(
+    private candidatoService: CandidatoService, 
+    private router: Router, 
+    private userStateService: UserStateService,
+    private recrutadorService: RecrutadorService
+  ) {}
 
   cadastrar() {
     if(this.type === 'c') {
       this.candidatoService.cadastrar(this.user as Candidato).subscribe({
-        next: (candidato) => {
-          this.user = candidato;
-          this.userStateService.setCandidato(candidato);
+        next: (data: any) => {
+          this.user = data.candidato;
+          this.userStateService.setCandidato(data.candidato);
           this.router.navigate(['/candidato-dashboard']);
         },
 
@@ -36,7 +42,17 @@ export class CadastroPageComponent {
         }
       });
     } else if (this.type === 'r') {
-      // Logica de cadastro para recrutador
+      this.recrutadorService.cadastrar(this.user as Recrutador).subscribe({
+        next: (recrutador) => {
+          this.user = recrutador;
+          this.userStateService.setRecruiter(recrutador);
+          this.router.navigate(['/recrutador-dashboard']);
+        },
+        error: (err) =>  {  
+          console.error('Erro ao cadastrar recrutador:', err)
+          this.menssagem = err
+        }
+      });
     }
   }
 

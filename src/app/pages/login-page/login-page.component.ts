@@ -6,6 +6,7 @@ import { Router } from '@angular/router';
 import { CommonModule } from '@angular/common';
 import { FormsModule } from '@angular/forms';
 import { RouterLink } from '@angular/router';
+import { RecrutadorService } from '../../shared/services/recrutador.service';
 
 @Component({
   selector: 'app-login-page',
@@ -25,7 +26,7 @@ export class LoginPageComponent implements OnInit {
 
   type = ""
 
-  constructor(private candidatoService: CandidatoService, private userStateService: UserStateService, private router: Router) { }
+  constructor(private candidatoService: CandidatoService, private userStateService: UserStateService, private router: Router, private recrutadorService: RecrutadorService) { }
 
   ngOnInit(): void { 
     this.type = this.userStateService.getTypeUser();
@@ -52,7 +53,19 @@ export class LoginPageComponent implements OnInit {
         }
       });
     } else if (this.type === 'r') {
-      // Logica de login para recrutador
+      this.recrutadorService.logar(this.user.cpf, this.user.senha).subscribe({
+        next: (recrutador) => {
+          if (recrutador) {
+            this.message = 'Login realizado com sucesso!';
+            this.messageType = 'success';
+            this.userStateService.setRecruiter(recrutador);
+            this.router.navigate(['/recrutador-dashboard']);
+          } else {
+            this.message = 'CPF ou senha incorretos.';
+            this.messageType = 'error';
+          }
+        }
+      });
     }
   }
 }

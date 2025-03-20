@@ -11,5 +11,6 @@
     </div>
 
     <p class="description">{{ vaga.descricao }}</p>
-    <button (click)="candidatar()">Enviar currículo</button>
+    <button (click)="candidatar()" *ngIf="candidato">Enviar currículo</button>
+    <button (click)="verCandidatos()" *ngIf="recrutador">Mostrar candidaturas</button>
 </div>

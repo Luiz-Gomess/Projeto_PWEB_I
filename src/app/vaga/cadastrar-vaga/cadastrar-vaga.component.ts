@@ -4,6 +4,8 @@ import { VagaService } from '../../shared/services/vaga.service';
 import { CommonModule } from '@angular/common';
 import { FormsModule } from '@angular/forms';
 import { Router } from '@angular/router';
+import { Recrutador } from '../../shared/models/recrutador';
+import { UserStateService } from '../../shared/services/user-state.service';
 
 @Component({
   selector: 'app-cadastrar-vaga',
@@ -23,11 +25,17 @@ export class CadastrarVagaComponent implements OnInit {
     candidaturas: []
   };
 
+  recrutador: Recrutador | undefined;
+
   requisitosInput: string = '';
 
-  constructor(private vagaService: VagaService, private router: Router) { }
+  constructor(private vagaService: VagaService, private router: Router, private userStateService: UserStateService) { }
 
   ngOnInit(): void {
+    this.recrutador = this.userStateService.getRecruiter() as Recrutador;
+    if (!this.recrutador) {
+      this.router.navigate(['/login']);
+    }
   }
 
   adicionarRequisito(): void {
@@ -38,7 +46,8 @@ export class CadastrarVagaComponent implements OnInit {
   }
 
   onSubmit(): void {
-    this.vagaService.criarVaga(this.vaga).subscribe({
+    console.log(this.recrutador)
+    this.vagaService.criarVaga(this.vaga, this.recrutador?.cpf as string).subscribe({
       next: (vaga) => {
         console.log('Vaga criada com sucesso:', vaga);
         this.vaga = {
@@ -52,7 +61,7 @@ export class CadastrarVagaComponent implements OnInit {
           candidaturas: []
         };
         
-        this.router.navigate(['/listagem-vagas'])
+        this.router.navigate(['/recrutador-dashboard']);
       },
       error: (err) => {
         console.error('Erro ao criar vaga:', err);

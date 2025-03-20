@@ -1,1 +1,11 @@
-<p>recrutador-dashboard works!</p>
+<app-navbar></app-navbar>
+<main class="dashboard-container-recruiter">
+    <div class="listagem-vagas-container">
+        <div class="list-vagas" *ngFor="let vaga of listagemVagas">
+            <app-card-vaga [vaga]="vaga"></app-card-vaga>
+        </div>
+    </div>
+
+    <button (click)="navigateToNewVaga()"><mat-icon class="icon-create">add</mat-icon></button>
+</main>
+<app-footer></app-footer>

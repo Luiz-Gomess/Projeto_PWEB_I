@@ -1,0 +1,46 @@
+.dashboard-container-recruiter {
+    height: 90vh;
+    position: relative;
+}
+
+button {
+    position: fixed;
+    bottom: 30px;
+    right: 20px;
+    background-color: var(--corporation);
+    color: var(--secondary);
+    padding: 15px;
+    border-radius: 50%;
+    cursor: pointer;
+}
+
+.icon-create {
+    font-size: 3rem;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.listagem-vagas-container {
+    margin-top: 60px;
+    margin-bottom: 30px;
+    display: flex;
+    flex-wrap: wrap;
+    gap: 20px;
+    width: 100%;
+    padding-left: 3.3%;
+}
+
+.list-vagas {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+h2 {
+    text-align: center;
+    font-size: 2rem;
+    margin-top: 30px;
+    color: var(--text-color);
+    margin-bottom: 20px;
+}
